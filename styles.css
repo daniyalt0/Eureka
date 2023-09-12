@@ -36,9 +36,9 @@ button {
     margin-bottom: 10px; /* Add margin to separate buttons */
 }
 
-/* Style for the "Save Data" button */
+/* Style for the "Save Data" button (pastel peach) */
 #saveButton {
-    background-color: #7ba580; /* Different pastel tone color */
+    background-color: #ff9a8b; /* Pastel peach color */
 }
 
 #promptDisplay {
