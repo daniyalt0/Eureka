@@ -30,6 +30,7 @@ let prompts = [
     "Reflect on toothpick reinforcement – how can you strategically reinforce key areas while minimizing overall toothpick usage?",
     // Add your prompts here
 ];
+
 let clickCount = 0; // Initialize a counter
 const loggedPrompts = []; // To store logged prompts
 
