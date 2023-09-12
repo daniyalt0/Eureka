@@ -33,6 +33,7 @@ let prompts = [
 
 let clickCount = 0; // Initialize a counter
 const clickCountDisplay = document.getElementById("clickCountDisplay"); // Display element for click count
+const timestampList = document.getElementById("timestampList"); // List element for timestamps
 
 function generateRandomPrompt() {
     if (prompts.length === 0) {
@@ -42,7 +43,15 @@ function generateRandomPrompt() {
         const randomIndex = Math.floor(Math.random() * prompts.length);
         const randomPrompt = prompts[randomIndex];
         const timestamp = new Date().toLocaleTimeString(); // Get the current timestamp
+
+        // Display the prompt with timestamp
         promptDisplay.textContent = `Prompt #${clickCount}: ${randomPrompt} (Generated at ${timestamp})`;
+
+        // Create a new list item for the timestamp
+        const timestampItem = document.createElement("li");
+        timestampItem.textContent = `${timestamp}`;
+        timestampList.appendChild(timestampItem);
+
         prompts.splice(randomIndex, 1); // Remove the used prompt
         clickCountDisplay.textContent = `Click count: ${clickCount}`; // Update click count display
     }
@@ -50,16 +59,5 @@ function generateRandomPrompt() {
 
 const generateButton = document.getElementById("generateButton");
 const promptDisplay = document.getElementById("promptDisplay");
-
-generateButton.addEventListener("click", generateRandomPrompt);
-
-
-
-
-
-
-
-
-
 
 generateButton.addEventListener("click", generateRandomPrompt);
