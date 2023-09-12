@@ -39,26 +39,30 @@ function generateRandomPrompt() {
     if (prompts.length === 0) {
         promptDisplay.textContent = "No prompts remaining.";
     } else {
-        clickCount++; // Increment the click count
         const randomIndex = Math.floor(Math.random() * prompts.length);
         const randomPrompt = prompts[randomIndex];
-        const timestamp = new Date().toLocaleTimeString(); // Get the current timestamp
 
-        // Display the prompt with timestamp
-        promptDisplay.textContent = `Prompt #${clickCount}: ${randomPrompt} (Generated at ${timestamp})`;
+        // Ask the user if they want to continue
+        const shouldContinue = confirm(`Prompt #${clickCount + 1}: ${randomPrompt}\n\nDo you want to continue?`);
 
-        // Create a new list item for the timestamp
-        const timestampItem = document.createElement("li");
-        timestampItem.textContent = `${timestamp}`;
-        timestampItem.style.fontFamily = "Roboto Mono, monospace"; // Apply "Roboto Mono" font
-        timestampList.appendChild(timestampItem);
+        if (!shouldContinue) {
+            clickCount++; // Increment the click count
+            const timestamp = new Date().toLocaleTimeString(); // Get the current timestamp
 
-        prompts.splice(randomIndex, 1); // Remove the used prompt
-        clickCountDisplay.textContent = `Click count: ${clickCount}`; // Update click count display
+            // Display the prompt with timestamp
+            promptDisplay.textContent = `Prompt #${clickCount}: ${randomPrompt}`;
+            const timestampItem = document.createElement("li");
+            timestampItem.textContent = `${timestamp}`;
+            timestampItem.style.fontFamily = "Roboto Mono, monospace"; // Apply "Roboto Mono" font
+            timestampList.appendChild(timestampItem);
 
-        // Export data as text
-        const exportedData = `Prompt #${clickCount}: ${randomPrompt} (Generated at ${timestamp})`;
-        exportData(exportedData);
+            prompts.splice(randomIndex, 1); // Remove the used prompt
+            clickCountDisplay.textContent = `Click count: ${clickCount}`; // Update click count display
+
+            // Export data as text
+            const exportedData = `Prompt #${clickCount}: ${randomPrompt} (Generated at ${timestamp})`;
+            exportData(exportedData);
+        }
     }
 }
 
