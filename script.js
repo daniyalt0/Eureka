@@ -30,7 +30,6 @@ let prompts = [
     "Reflect on toothpick reinforcement – how can you strategically reinforce key areas while minimizing overall toothpick usage?",
     // Add your prompts here
 ];
-
 let clickCount = 0; // Initialize a counter
 const loggedPrompts = []; // To store logged prompts
 
@@ -45,6 +44,9 @@ function generateRandomPrompt() {
         const randomIndex = Math.floor(Math.random() * prompts.length);
         const randomPrompt = prompts[randomIndex];
         const timestamp = new Date().toLocaleTimeString(); // Get the current timestamp
+
+        // Clear the previous prompts from the list
+        timestampList.innerHTML = "";
 
         // Display the prompt with timestamp
         promptDisplay.textContent = `Prompt #${clickCount}: ${randomPrompt}`;
