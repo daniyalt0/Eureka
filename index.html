@@ -3,22 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Prompt Generator</title>
+    <title>Prompt Randomizer</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="container">
-        <h1>Prompt Generator</h1>
+        <h1>Random Prompt Generator</h1>
         <button id="generateButton">Generate Prompt</button>
-        <button id="saveButton">Save Data</button> <!-- New button to save data -->
+        <button id="saveButton">Save Data</button>
         <p id="promptDisplay"></p>
         <p id="clickCountDisplay">Click count: 0</p>
         <div id="timestampGrid">
             <ul id="timestampList"></ul>
         </div>
-        <p id="exportMessage" style="color: green;"></p> <!-- Export message -->
+        <p id="exportMessage" style="color: green;"></p>
     </div>
 
+    <!-- Include the speech synthesis script -->
+    <script src="speechSynthesis.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
+
