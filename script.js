@@ -50,11 +50,36 @@ function generateRandomPrompt() {
         // Create a new list item for the timestamp
         const timestampItem = document.createElement("li");
         timestampItem.textContent = `${timestamp}`;
+        timestampItem.style.fontFamily = "Roboto Mono, monospace"; // Apply "Roboto Mono" font
         timestampList.appendChild(timestampItem);
 
         prompts.splice(randomIndex, 1); // Remove the used prompt
         clickCountDisplay.textContent = `Click count: ${clickCount}`; // Update click count display
+
+        // Export data as text
+        const exportedData = `Prompt #${clickCount}: ${randomPrompt} (Generated at ${timestamp})`;
+        exportData(exportedData);
     }
+}
+
+function exportData(data) {
+    const blob = new Blob([data], { type: 'text/plain' });
+    const url = window.URL.createObjectURL(blob);
+
+    const a = document.createElement('a');
+    a.style.display = 'none';
+    a.href = url;
+    a.download = 'generated_data.txt';
+
+    document.body.appendChild(a);
+    a.click();
+
+    window.URL.revokeObjectURL(url);
+
+    // Display a success message
+    const exportMessage = document.getElementById("exportMessage");
+    exportMessage.textContent = "Data exported successfully!";
+    exportMessage.style.color = "#556f7b"; // Apply pastel tone color to the message
 }
 
 const generateButton = document.getElementById("generateButton");
