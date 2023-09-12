@@ -30,23 +30,38 @@ let prompts = [
     "Reflect on toothpick reinforcement – how can you strategically reinforce key areas while minimizing overall toothpick usage?",
     // Add your prompts here
 ];
-
 let clickCount = 0; // Initialize a counter
+let firstPromptGenerated = false; // Track if the first prompt is generated
+
 const clickCountDisplay = document.getElementById("clickCountDisplay"); // Display element for click count
 const timestampList = document.getElementById("timestampList"); // List element for timestamps
 
 function generateRandomPrompt() {
-    if (prompts.length === 0) {
-        promptDisplay.textContent = "No prompts remaining.";
-    } else {
+    if (!firstPromptGenerated) {
         const randomIndex = Math.floor(Math.random() * prompts.length);
         const randomPrompt = prompts[randomIndex];
 
-        // Ask the user if they want to continue
-        const shouldContinue = confirm(`Prompt #${clickCount + 1}: ${randomPrompt}\n\nDo you want to continue?`);
+        // Display the first prompt
+        promptDisplay.textContent = `Prompt #1: ${randomPrompt}`;
+
+        // Ask the user if they want to continue (only for the first prompt)
+        const shouldContinue = confirm(`Prompt #1: ${randomPrompt}\n\nClick "OK" to continue or "Cancel" to save and exit.`);
 
         if (!shouldContinue) {
+            // If the user clicks "Cancel," save and exit
+            firstPromptGenerated = true;
+            exportDataAndExit();
+        } else {
+            firstPromptGenerated = true;
+            prompts.splice(randomIndex, 1); // Remove the used prompt
+        }
+    } else {
+        if (prompts.length === 0) {
+            promptDisplay.textContent = "No prompts remaining.";
+        } else {
             clickCount++; // Increment the click count
+            const randomIndex = Math.floor(Math.random() * prompts.length);
+            const randomPrompt = prompts[randomIndex];
             const timestamp = new Date().toLocaleTimeString(); // Get the current timestamp
 
             // Display the prompt with timestamp
@@ -59,7 +74,7 @@ function generateRandomPrompt() {
             prompts.splice(randomIndex, 1); // Remove the used prompt
             clickCountDisplay.textContent = `Click count: ${clickCount}`; // Update click count display
 
-            // Export data as text
+            // Export data as text for subsequent prompts
             const exportedData = `Prompt #${clickCount}: ${randomPrompt} (Generated at ${timestamp})`;
             exportData(exportedData);
         }
@@ -84,6 +99,16 @@ function exportData(data) {
     const exportMessage = document.getElementById("exportMessage");
     exportMessage.textContent = "Data exported successfully!";
     exportMessage.style.color = "#556f7b"; // Apply pastel tone color to the message
+}
+
+function exportDataAndExit() {
+    // Export data as text and exit
+    let exportedData = "Generated Prompts:\n";
+    const timestampItems = timestampList.getElementsByTagName("li");
+    for (let i = 0; i < timestampItems.length; i++) {
+        exportedData += `${timestampItems[i].textContent}\n`;
+    }
+    exportData(exportedData);
 }
 
 const generateButton = document.getElementById("generateButton");
