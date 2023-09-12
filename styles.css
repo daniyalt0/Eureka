@@ -16,6 +16,7 @@ body {
     max-width: 100%;
     padding: 20px;
     box-sizing: border-box;
+    text-align: center; /* Center-align content */
 }
 
 h1 {
@@ -42,30 +43,19 @@ button {
 }
 
 #promptDisplay {
-    font-size: 20px;
+    font-size: 24px; /* Increase font size for the prompt */
     margin-top: 20px;
 }
 
 #clickCountDisplay {
-    font-size: 18px;
+    font-size: 20px; /* Increase font size for click count */
     margin-top: 20px;
+    text-align: center; /* Center-align click count */
+    font-weight: bold; /* Make it bold for emphasis */
 }
 
 #timestampGrid {
-    display: grid;
-    grid-template-columns: 1fr 1fr; /* Two columns for the grid */
-    grid-gap: 10px; /* Gap between grid items */
-    margin-top: 20px;
-}
-
-ul#timestampList {
-    list-style-type: none;
-    padding: 0;
-}
-
-ul#timestampList li {
-    font-size: 16px;
-    color: #556f7b; /* Pastel tone color for timestamps */
+    display: none; /* Hide the timestamp list */
 }
 
 /* Media Query for Small Screens */
@@ -79,14 +69,10 @@ ul#timestampList li {
     }
     
     #promptDisplay {
-        font-size: 18px;
+        font-size: 20px; /* Slightly smaller font size for small screens */
     }
     
     #clickCountDisplay {
-        font-size: 16px;
-    }
-    
-    ul#timestampList li {
-        font-size: 14px;
+        font-size: 18px; /* Slightly smaller font size for small screens */
     }
 }
