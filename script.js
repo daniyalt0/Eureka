@@ -1,14 +1,17 @@
-const prompts = [
-    "Prompt 1",
-    "Prompt 2",
-    "Prompt 3",
-    // Add your 30 prompts here
-];
+let prompts = [];
 
-const generateButton = document.getElementById("generateButton");
-const promptDisplay = document.getElementById("promptDisplay");
+// Function to fetch prompts from prompts.json
+function fetchPrompts() {
+    fetch('prompts.json')
+        .then(response => response.json())
+        .then(data => {
+            prompts = data;
+        })
+        .catch(error => console.error('Error fetching prompts:', error));
+}
 
-generateButton.addEventListener("click", () => {
+// Function to generate and display a random prompt
+function generateRandomPrompt() {
     if (prompts.length === 0) {
         promptDisplay.textContent = "No prompts remaining.";
     } else {
@@ -17,4 +20,9 @@ generateButton.addEventListener("click", () => {
         promptDisplay.textContent = randomPrompt;
         prompts.splice(randomIndex, 1); // Remove the used prompt
     }
-});
+}
+
+generateButton.addEventListener("click", generateRandomPrompt);
+
+// Fetch prompts when the page loads
+fetchPrompts();
