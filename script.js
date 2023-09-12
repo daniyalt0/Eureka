@@ -53,7 +53,7 @@ function generateRandomPrompt() {
         timestampItem.style.fontFamily = "Roboto Mono, monospace"; // Apply "Roboto Mono" font
         timestampList.appendChild(timestampItem);
 
-        loggedPrompts.push(`${clickCount}: ${randomPrompt} (Generated at ${timestamp})`);
+        loggedPrompts.push({ prompt: randomPrompt, timestamp: timestamp });
         prompts.splice(randomIndex, 1); // Remove the used prompt
         clickCountDisplay.textContent = `Click count: ${clickCount}`; // Update click count display
     }
@@ -61,20 +61,26 @@ function generateRandomPrompt() {
 
 function saveLoggedData() {
     if (loggedPrompts.length > 0) {
+        // Create a CSV string with columns for prompt names and timestamps
+        let csvData = "Prompt Name,Time Stamp\n";
+        for (const loggedPrompt of loggedPrompts) {
+            csvData += `"${loggedPrompt.prompt}","${loggedPrompt.timestamp}"\n`;
+        }
+        csvData += `Total Count,${clickCount}\n`;
+
         // Export data as text
-        const exportedData = `Logged Prompts:\n\n${loggedPrompts.join('\n\n')}`;
-        exportData(exportedData);
+        exportData(csvData);
     }
 }
 
 function exportData(data) {
-    const blob = new Blob([data], { type: 'text/plain' });
+    const blob = new Blob([data], { type: 'text/csv' });
     const url = window.URL.createObjectURL(blob);
 
     const a = document.createElement('a');
     a.style.display = 'none';
     a.href = url;
-    a.download = 'generated_data.txt';
+    a.download = 'generated_data.csv';
 
     document.body.appendChild(a);
     a.click();
