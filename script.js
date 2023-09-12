@@ -1,9 +1,14 @@
-llet prompts = [
-    "Prompt 1",
-    "Prompt 2",
-    "Prompt 3",
-    // Add your prompts here
-];
+let prompts = [];
+
+// Function to fetch prompts from prompts.json
+function fetchPrompts() {
+    fetch('prompts.json')
+        .then(response => response.json())
+        .then(data => {
+            prompts = data;
+        })
+        .catch(error => console.error('Error fetching prompts:', error));
+}
 
 // Function to generate and display a random prompt
 function generateRandomPrompt() {
@@ -22,3 +27,5 @@ const promptDisplay = document.getElementById("promptDisplay");
 
 generateButton.addEventListener("click", generateRandomPrompt);
 
+// Fetch prompts when the page loads
+fetchPrompts();
