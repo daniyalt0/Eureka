@@ -1,7 +1,9 @@
 let prompts = [
-    "Prompt 1",
-    "Prompt 2",
-    "Prompt 3",
+    
+    "Explore toothpick patterning – how can repeating patterns create strength while reducing toothpick count?",
+    "Challenge yourself with the toothpick diamond principle – can diamonds be the key to efficiency in your design?",
+    "Investigate the concept of toothpick honeycombs – can hexagonal patterns offer stability with fewer toothpicks?",
+    "Reflect on toothpick reinforcement – how can you strategically reinforce key areas while minimizing overall toothpick usage?",
     // Add your prompts here
 ];
 
