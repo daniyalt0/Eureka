@@ -7,8 +7,9 @@ body, h1, p, ul, button {
 }
 
 body {
-    font-family: Arial, sans-serif;
+    font-family: "Roboto Mono", monospace; /* Use "Roboto Mono" font for the entire page */
     background-color: #f0f0f0;
+    color: #556f7b; /* Pastel tone color for text */
 }
 
 .container {
@@ -24,7 +25,7 @@ h1 {
 }
 
 button {
-    background-color: #007bff;
+    background-color: #80b1c3; /* Pastel tone color */
     color: #fff;
     padding: 10px 20px;
     border: none;
