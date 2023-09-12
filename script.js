@@ -31,47 +31,47 @@ let prompts = [
     // Add your prompts here
 ];
 
-let clickCount = 0; // Initialize a counter
-const loggedPrompts = []; // To store logged prompts
+let clickCount = 0;
+const loggedPrompts = [];
 
-const clickCountDisplay = document.getElementById("clickCountDisplay"); // Display element for click count
-const timestampList = document.getElementById("timestampList"); // List element for timestamps
+const clickCountDisplay = document.getElementById("clickCountDisplay");
+const timestampList = document.getElementById("timestampList");
+const hearButton = document.getElementById("hearButton"); // Reference to the "Hear This Prompt" button
 
 function generateRandomPrompt() {
     if (prompts.length === 0) {
         promptDisplay.textContent = "No prompts remaining.";
     } else {
-        clickCount++; // Increment the click count
+        clickCount++;
         const randomIndex = Math.floor(Math.random() * prompts.length);
         const randomPrompt = prompts[randomIndex];
-        const timestamp = new Date().toLocaleTimeString(); // Get the current timestamp
+        const timestamp = new Date().toLocaleTimeString();
 
-        // Clear the previous prompts from the list
         timestampList.innerHTML = "";
 
-        // Display the prompt with timestamp
         promptDisplay.textContent = `Prompt #${clickCount}: ${randomPrompt}`;
         const timestampItem = document.createElement("li");
         timestampItem.textContent = `${clickCount}: ${randomPrompt} (Generated at ${timestamp})`;
-        timestampItem.style.fontFamily = "Roboto Mono, monospace"; // Apply "Roboto Mono" font
+        timestampItem.style.fontFamily = "Roboto Mono, monospace";
         timestampList.appendChild(timestampItem);
 
         loggedPrompts.push({ prompt: randomPrompt, timestamp: timestamp });
-        prompts.splice(randomIndex, 1); // Remove the used prompt
-        clickCountDisplay.textContent = `Click count: ${clickCount}`; // Update click count display
+        prompts.splice(randomIndex, 1);
+        clickCountDisplay.textContent = `Click count: ${clickCount}`;
+
+        // Enable the "Hear This Prompt" button after generating a prompt
+        hearButton.disabled = false;
     }
 }
 
 function saveLoggedData() {
     if (loggedPrompts.length > 0) {
-        // Create a CSV string with columns for prompt names and timestamps
         let csvData = "Prompt Name,Time Stamp\n";
         for (const loggedPrompt of loggedPrompts) {
             csvData += `"${loggedPrompt.prompt}","${loggedPrompt.timestamp}"\n`;
         }
         csvData += `Total Count,${clickCount}\n`;
 
-        // Export data as text
         exportData(csvData);
     }
 }
@@ -90,10 +90,14 @@ function exportData(data) {
 
     window.URL.revokeObjectURL(url);
 
-    // Display a success message
     const exportMessage = document.getElementById("exportMessage");
     exportMessage.textContent = "Data exported successfully!";
-    exportMessage.style.color = "#556f7b"; // Apply pastel tone color to the message
+    exportMessage.style.color = "#556f7b";
+}
+
+function hearCurrentPrompt() {
+    const currentPromptText = promptDisplay.textContent.replace(/^Prompt \d+: /, ''); // Remove "Prompt #X: "
+    speakPrompt(currentPromptText);
 }
 
 const generateButton = document.getElementById("generateButton");
@@ -102,3 +106,11 @@ const promptDisplay = document.getElementById("promptDisplay");
 
 generateButton.addEventListener("click", generateRandomPrompt);
 saveButton.addEventListener("click", saveLoggedData);
+
+// Add a click event listener to the "Hear This Prompt" button
+hearButton.addEventListener("click", hearCurrentPrompt);
+
+// Disable the "Hear This Prompt" button initially
+hearButton.disabled = true;
+
+
