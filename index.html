@@ -9,14 +9,18 @@
 <body>
     <div class="container">
         <h1>Random Prompt Generator</h1>
-        <button id="generateButton">Generate Prompt</button>
-        <button id="saveButton">Save Data</button>
+        <div class="button-container">
+            <button id="generateButton">Generate Prompt</button>
+            <button id="saveButton">Save Data</button>
+        </div>
         <p id="promptDisplay"></p>
         <p id="clickCountDisplay">Click count: 0</p>
         <div id="timestampGrid">
             <ul id="timestampList"></ul>
         </div>
         <p id="exportMessage" style="color: green;"></p>
+        <!-- Add the "Hear This Prompt" button with a new ID -->
+        <button id="hearButton" class="hear-button">Hear This Prompt</button>
     </div>
 
     <!-- Include the speech synthesis script -->
@@ -24,4 +28,5 @@
     <script src="script.js"></script>
 </body>
 </html>
+
 
