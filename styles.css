@@ -30,6 +30,18 @@ h1 {
     margin-bottom: 20px;
 }
 
+/* Style for the "Generate Prompt" button (pastel teal blue) */
+.generate-button {
+    background-color: #64c2b2; /* Pastel teal blue color */
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
 /* Style for the "Hear This Prompt" button (pastel teal green) */
 .hear-button {
     background-color: #4fc3a1; /* Pastel teal green color */
@@ -47,11 +59,6 @@ h1 {
     flex-direction: column;
     gap: 10px;
     margin-top: 20px;
-}
-
-/* Style for the "Save Data" button (pastel peach) */
-#saveButton {
-    background-color: #ff9a8b; /* Pastel peach color */
 }
 
 #promptDisplay {
@@ -77,8 +84,8 @@ h1 {
     }
     
     /* Adjust button font size for small screens */
+    .generate-button,
     .hear-button,
-    #generateButton,
     #saveButton {
         font-size: 16px;
     }
