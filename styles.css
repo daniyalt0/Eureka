@@ -9,12 +9,17 @@ body, h1, p, ul, button {
 body {
     font-family: Arial, sans-serif;
     background-color: #f0f0f0;
-    text-align: center;
+}
+
+.container {
+    max-width: 100%;
     padding: 20px;
+    box-sizing: border-box;
 }
 
 h1 {
     color: #333;
+    font-size: 24px;
     margin-bottom: 20px;
 }
 
@@ -25,6 +30,8 @@ button {
     border: none;
     cursor: pointer;
     font-size: 18px;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 #promptDisplay {
@@ -46,4 +53,27 @@ ul#timestampList {
 ul#timestampList li {
     font-size: 16px;
     margin-bottom: 5px;
+}
+
+/* Media Query for Small Screens */
+@media (max-width: 480px) {
+    h1 {
+        font-size: 20px;
+    }
+    
+    button {
+        font-size: 16px;
+    }
+    
+    #promptDisplay {
+        font-size: 18px;
+    }
+    
+    #clickCountDisplay {
+        font-size: 16px;
+    }
+    
+    ul#timestampList li {
+        font-size: 14px;
+    }
 }
