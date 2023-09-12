@@ -31,19 +31,35 @@ let prompts = [
     // Add your prompts here
 ];
 
-// Function to generate and display a random prompt
+let clickCount = 0; // Initialize a counter
+const clickCountDisplay = document.getElementById("clickCountDisplay"); // Display element for click count
+
 function generateRandomPrompt() {
     if (prompts.length === 0) {
         promptDisplay.textContent = "No prompts remaining.";
     } else {
+        clickCount++; // Increment the click count
         const randomIndex = Math.floor(Math.random() * prompts.length);
         const randomPrompt = prompts[randomIndex];
-        promptDisplay.textContent = randomPrompt;
+        const timestamp = new Date().toLocaleTimeString(); // Get the current timestamp
+        promptDisplay.textContent = `Prompt #${clickCount}: ${randomPrompt} (Generated at ${timestamp})`;
         prompts.splice(randomIndex, 1); // Remove the used prompt
+        clickCountDisplay.textContent = `Click count: ${clickCount}`; // Update click count display
     }
 }
 
 const generateButton = document.getElementById("generateButton");
 const promptDisplay = document.getElementById("promptDisplay");
+
+generateButton.addEventListener("click", generateRandomPrompt);
+
+
+
+
+
+
+
+
+
 
 generateButton.addEventListener("click", generateRandomPrompt);
