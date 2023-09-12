@@ -22,6 +22,9 @@ function generateRandomPrompt() {
     }
 }
 
+const generateButton = document.getElementById("generateButton");
+const promptDisplay = document.getElementById("promptDisplay");
+
 generateButton.addEventListener("click", generateRandomPrompt);
 
 // Fetch prompts when the page loads
