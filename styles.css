@@ -10,6 +10,10 @@ body {
     font-family: "Roboto Mono", monospace; /* Use "Roboto Mono" font for the entire page */
     background-color: #f0f0f0;
     color: #556f7b; /* Pastel tone color for text */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 100vh; /* Ensure the page takes up the full viewport height */
 }
 
 .container {
@@ -17,6 +21,7 @@ body {
     padding: 20px;
     box-sizing: border-box;
     text-align: center; /* Center-align content */
+    flex-grow: 1; /* Allow the container to grow and take available space */
 }
 
 h1 {
@@ -25,8 +30,9 @@ h1 {
     margin-bottom: 20px;
 }
 
-button {
-    background-color: #80b1c3; /* Pastel tone color */
+/* Style for the "Hear This Prompt" button (pastel teal green) */
+.hear-button {
+    background-color: #4fc3a1; /* Pastel teal green color */
     color: #fff;
     padding: 10px 20px;
     border: none;
@@ -34,7 +40,13 @@ button {
     font-size: 18px;
     width: 100%;
     box-sizing: border-box;
-    margin-bottom: 10px; /* Add margin to separate buttons */
+}
+
+.button-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 20px;
 }
 
 /* Style for the "Save Data" button (pastel peach) */
@@ -64,7 +76,10 @@ button {
         font-size: 20px;
     }
     
-    button {
+    /* Adjust button font size for small screens */
+    .hear-button,
+    #generateButton,
+    #saveButton {
         font-size: 16px;
     }
     
