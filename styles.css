@@ -33,6 +33,12 @@ button {
     font-size: 18px;
     width: 100%;
     box-sizing: border-box;
+    margin-bottom: 10px; /* Add margin to separate buttons */
+}
+
+/* Style for the "Save Logged Data" button */
+#saveButton {
+    background-color: #7ba580; /* Different pastel tone color */
 }
 
 #promptDisplay {
