@@ -30,9 +30,9 @@ h1 {
     margin-bottom: 20px;
 }
 
-/* Style for the "Generate Prompt" button (pastel teal blue) */
+/* Style for the "Generate Prompt" button (pastel blue) */
 .generate-button {
-    background-color: #64c2b2; /* Pastel teal blue color */
+    background-color: #6c88a0; /* Pastel blue color */
     color: #fff;
     padding: 10px 20px;
     border: none;
@@ -43,21 +43,8 @@ h1 {
     margin-bottom: 10px; /* Add a margin to create a gap */
 }
 
-/* Style for the "Hear This Prompt" button (pastel teal blue color) */
+/* Style for the "Hear This Prompt" button (pastel peach) */
 .hear-button {
-    background-color: #64c2b2; /* Pastel teal blue color */
-    color: #fff;
-    padding: 10px 20px;
-    border: none;
-    cursor: pointer;
-    font-size: 18px;
-    width: 100%;
-    box-sizing: border-box;
-    margin-bottom: 10px; /* Add a margin to create a gap */
-}
-
-/* Style for the "Save Data" button (pastel peach) */
-#saveButton {
     background-color: #ff9a8b; /* Pastel peach color */
     color: #fff;
     padding: 10px 20px;
@@ -66,7 +53,25 @@ h1 {
     font-size: 18px;
     width: 100%;
     box-sizing: border-box;
+    margin-bottom: 10px; /* Add a margin to create a gap */
+}
+
+/* Style for the "Save Data" button (pastel blue) */
+#saveButton {
+    background-color: #6c88a0; /* Pastel blue color */
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+    width: 100%;
+    box-sizing: border-box;
     margin-bottom: 20px; /* Add a larger margin */
+}
+
+/* Add spacing between buttons */
+.button-spacing {
+    margin-bottom: 10px;
 }
 
 .button-container {
