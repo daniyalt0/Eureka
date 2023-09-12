@@ -45,15 +45,21 @@ button {
     margin-top: 20px;
 }
 
+#timestampGrid {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Two columns for the grid */
+    grid-gap: 10px; /* Gap between grid items */
+    margin-top: 20px;
+}
+
 ul#timestampList {
     list-style-type: none;
-    margin-top: 20px;
     padding: 0;
 }
 
 ul#timestampList li {
     font-size: 16px;
-    margin-bottom: 5px;
+    color: #556f7b; /* Pastel tone color for timestamps */
 }
 
 /* Media Query for Small Screens */
