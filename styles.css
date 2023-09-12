@@ -40,6 +40,7 @@ h1 {
     font-size: 18px;
     width: 100%;
     box-sizing: border-box;
+    margin-bottom: 10px; /* Add a margin to create a gap */
 }
 
 /* Style for the "Hear This Prompt" button (pastel teal blue color) */
@@ -52,6 +53,7 @@ h1 {
     font-size: 18px;
     width: 100%;
     box-sizing: border-box;
+    margin-bottom: 10px; /* Add a margin to create a gap */
 }
 
 /* Style for the "Save Data" button (pastel peach) */
@@ -64,6 +66,7 @@ h1 {
     font-size: 18px;
     width: 100%;
     box-sizing: border-box;
+    margin-bottom: 20px; /* Add a larger margin */
 }
 
 .button-container {
@@ -76,11 +79,12 @@ h1 {
 #promptDisplay {
     font-size: 24px; /* Increase font size for the prompt */
     margin-top: 20px;
+    margin-bottom: 10px; /* Add a margin to create a gap */
 }
 
 #clickCountDisplay {
     font-size: 20px; /* Increase font size for click count */
-    margin-top: 20px;
+    margin-top: 10px; /* Add a margin to create a gap */
     text-align: center; /* Center-align click count */
     font-weight: bold; /* Make it bold for emphasis */
 }
