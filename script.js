@@ -199,20 +199,9 @@ document.getElementById("generateButton-g5-3").addEventListener("click", functio
 
 //--------------------------------------------------------------------------------------------------------------------//
 
-// Additional event listener for the new "Generate Prompt" button
-//document.getElementById("generateButton").addEventListener("click", function () {
-    //generateRandomPrompt(currentPrompts);
-});
-
-// ...
-
-let clickCount = 0;
-const loggedPrompts = [];
-let currentPrompts = []; // Store the prompts for the currently selected group
-
-const clickCountDisplay = document.getElementById("clickCountDisplay");
-const timestampList = document.getElementById("timestampList");
-const hearButton = document.getElementById("hearButton"); // Reference to the "Hear This Prompt" button
+// Initialize the "Generate Prompt" button as disabled by default
+const generateButton = document.getElementById("generateButton");
+generateButton.disabled = true; // Disable it by default
 
 // Event listener for group selection
 const groupSelection = document.getElementById("groupSelection");
@@ -241,6 +230,9 @@ groupSelection.addEventListener("change", function () {
             break;
         // Repeat the switch cases for other groups as needed
     }
+
+    // Enable the "Generate Prompt" button when a group is selected
+    generateButton.disabled = false;
 });
 
 function generateRandomPrompt(prompts) {
