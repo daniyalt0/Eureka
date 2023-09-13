@@ -110,10 +110,7 @@ let g5Prompts3 = [
     // Add more prompts for List 3
 ];
 
-
-
 //---------------------------------------------------------------------------------------------------------------------------//
-
 
 // Define prompts for other groups and prompt lists in a similar manner
 // ...
@@ -202,17 +199,16 @@ document.getElementById("generateButton-g5-3").addEventListener("click", functio
 
 //--------------------------------------------------------------------------------------------------------------------//
 
-
-
-// Repeat the above event listeners for all groups and prompt lists.
-
-
-
+// Additional event listener for the new "Generate Prompt" button
+document.getElementById("generateButton").addEventListener("click", function () {
+    generateRandomPrompt(currentPrompts);
+});
 
 // ...
 
 let clickCount = 0;
 const loggedPrompts = [];
+let currentPrompts = []; // Store the prompts for the currently selected group
 
 const clickCountDisplay = document.getElementById("clickCountDisplay");
 const timestampList = document.getElementById("timestampList");
@@ -223,7 +219,7 @@ const groupSelection = document.getElementById("groupSelection");
 groupSelection.addEventListener("change", function () {
     const selectedGroup = groupSelection.value;
     // Hide all groups
-    const allGroups = document.querySelectorAll(".container");
+    const allGroups = document.querySelectorAll(".group-container");
     allGroups.forEach(group => group.style.display = "none");
     // Show the selected group
     const selectedGroupDiv = document.getElementById(`group-${selectedGroup}`);
@@ -235,6 +231,16 @@ groupSelection.addEventListener("change", function () {
     promptDisplay.textContent = "";
     exportMessage.textContent = "";
     hearButton.disabled = true;
+    // Update the current prompts based on the selected group
+    switch (selectedGroup) {
+        case "g1":
+            currentPrompts = g1Prompts1; // Set the prompts for the selected group
+            break;
+        case "g2":
+            currentPrompts = g2Prompts1; // Set the prompts for the selected group
+            break;
+        // Repeat the switch cases for other groups as needed
+    }
 });
 
 function generateRandomPrompt(prompts) {
@@ -328,10 +334,3 @@ function speakPrompt(promptText) {
         alert("Speech synthesis is not supported in this browser.");
     }
 }
-
-/* styles.css */
-
-// The CSS code remains the same as your original code with the addition of the group selection styling.
-// You can refer to the previous CSS code provided.
-
-// Media query and other styles from your original code also remain unchanged.
