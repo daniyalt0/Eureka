@@ -300,12 +300,12 @@ function hearCurrentPrompt() {
     speakPrompt(currentPromptText);
 }
 
-const generateButton = document.getElementById("generateButton");
+
 const saveButton = document.getElementById("saveButton");
 const promptDisplay = document.getElementById("promptDisplay");
 const exportMessage = document.getElementById("exportMessage"); // Reference to the "Exported Data Message"
 
-generateButton.addEventListener("click", generateRandomPrompt);
+
 saveButton.addEventListener("click", saveLoggedData);
 
 // Add a click event listener to the "Hear This Prompt" button
