@@ -5,21 +5,21 @@ body, h1, p, ul, button, select {
 }
 
 body {
-    font-family: "Roboto Mono", monospace; /* Use "Roboto Mono" font for the entire page */
+    font-family: "Roboto Mono", monospace;
     background-color: #f0f0f0;
-    color: #556f7b; /* Pastel tone color for text */
+    color: #556f7b;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    min-height: 100vh; /* Ensure the page takes up the full viewport height */
+    min-height: 100vh;
 }
 
 .container {
     max-width: 100%;
     padding: 20px;
     box-sizing: border-box;
-    text-align: center; /* Center-align content */
-    flex-grow: 1; /* Allow the container to grow and take available space */
+    text-align: center;
+    flex-grow: 1;
 }
 
 h1 {
@@ -28,9 +28,9 @@ h1 {
     margin-bottom: 20px;
 }
 
-/* Style for the "Generate Prompt" buttons (pastel teal) */
+/* Style for the "Generate Prompt" button (pastel teal) */
 .generate-button {
-    background-color: #64c2b2; /* Pastel teal color */
+    background-color: #64c2b2;
     color: #fff;
     padding: 10px 20px;
     border: none;
@@ -38,25 +38,12 @@ h1 {
     font-size: 18px;
     width: 100%;
     box-sizing: border-box;
-    margin-bottom: 10px; /* Add a margin to create a gap */
-}
-
-/* Style for the "Hear This Prompt" button (pastel teal) */
-.hear-button {
-    background-color: #64c2b2; /* Pastel teal color */
-    color: #fff;
-    padding: 10px 20px;
-    border: none;
-    cursor: pointer;
-    font-size: 18px;
-    width: 100%;
-    box-sizing: border-box;
-    margin-bottom: 10px; /* Add a margin to create a gap */
+    margin-bottom: 10px;
 }
 
 /* Style for the "Save Data" button (pastel peach) */
 #saveButtonSet1, #saveButtonSet2, #saveButtonSet3 {
-    background-color: #ff9a8b; /* Pastel peach color */
+    background-color: #ff9a8b;
     color: #fff;
     padding: 10px 20px;
     border: none;
@@ -64,7 +51,7 @@ h1 {
     font-size: 18px;
     width: 100%;
     box-sizing: border-box;
-    margin-bottom: 20px; /* Add a larger margin */
+    margin-bottom: 20px;
 }
 
 /* Add spacing between buttons */
@@ -79,43 +66,18 @@ h1 {
     margin-top: 20px;
 }
 
-/* Prompt display styles */
-#promptDisplaySet1, #promptDisplaySet2, #promptDisplaySet3 {
-    font-size: 24px; /* Increase font size for the prompt */
-    margin-top: 20px;
-    margin-bottom: 10px; /* Add a margin to create a gap */
-}
-
-/* Click count display styles */
-#clickCountSet1, #clickCountSet2, #clickCountSet3 {
-    font-size: 20px; /* Increase font size for click count */
-    margin-top: 10px; /* Add a margin to create a gap */
-    text-align: center; /* Center-align click count */
-    font-weight: bold; /* Make it bold for emphasis */
-}
-
-/* Exported data message styles */
-#exportMessageSet1, #exportMessageSet2, #exportMessageSet3 {
+/* Style for the "Selection Dropdown" */
+#promptSetSelection {
+    padding: 10px;
     font-size: 16px;
-    margin-top: 10px;
-    color: green;
 }
 
-/* Timestamp list styles */
+/* Style for timestamp lists */
 ul {
     list-style: none;
     padding: 0;
-}
-
-/* Timestamp list item styles */
-li {
-    font-size: 14px;
-    margin-bottom: 5px;
-}
-
-/* Timestamp grid styles */
-#timestampGridSet1, #timestampGridSet2, #timestampGridSet3 {
-    display: none; /* Hide the timestamp list initially */
+    text-align: left;
+    font-size: 16px;
 }
 
 /* Media Query for Small Screens */
@@ -123,21 +85,15 @@ li {
     h1 {
         font-size: 20px;
     }
-    
-    /* Adjust button font size for small screens */
+
     .generate-button,
-    .hear-button,
     #saveButtonSet1,
     #saveButtonSet2,
     #saveButtonSet3 {
         font-size: 16px;
     }
-    
-    #promptDisplaySet1, #promptDisplaySet2, #promptDisplaySet3 {
-        font-size: 20px; /* Slightly smaller font size for small screens */
-    }
-    
-    #clickCountSet1, #clickCountSet2, #clickCountSet3 {
-        font-size: 18px; /* Slightly smaller font size for small screens */
+
+    ul {
+        font-size: 14px;
     }
 }
