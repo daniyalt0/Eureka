@@ -314,6 +314,7 @@ hearButton.addEventListener("click", hearCurrentPrompt);
 // Disable the "Hear This Prompt" button initially
 hearButton.disabled = true;
 
+
 function isSpeechSynthesisSupported() {
     return 'speechSynthesis' in window;
 }
