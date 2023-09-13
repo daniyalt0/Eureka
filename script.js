@@ -55,20 +55,34 @@ document.getElementById("generateButtonSet3").addEventListener("click", () => {
     updatePromptDisplay("g3");
     incrementClickCount("g3");
 });
+document.getElementById("generateButtonSet4").addEventListener("click", () => {
+    updatePromptDisplay("g4");
+    incrementClickCount("g4");
+});
+document.getElementById("generateButtonSet5").addEventListener("click", () => {
+    updatePromptDisplay("g5");
+    incrementClickCount("g5");
+});
 
 // Separate click counters for each set
 const clickCounts = {
     g1: 0,
     g2: 0,
     g3: 0,
+    g4: 0,
+    g5: 0,
 };
 
 // Function to increment and display the click count for a specific set
 function incrementClickCount(set) {
     clickCounts[set]++;
     const clickCountDisplay = document.getElementById(`clickCountSet${set}`);
-    clickCountDisplay.textContent = `Click count Set ${set}: ${clickCounts[set]}`;
+    if (clickCountDisplay) {
+        clickCountDisplay.textContent = `Click count Set ${set}: ${clickCounts[set]}`;
+    }
 }
+
+// Rest of your code...
 
 // Function to handle the "Save Data" button click for a specific set
 function saveData(set) {
