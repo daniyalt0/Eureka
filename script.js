@@ -200,8 +200,8 @@ document.getElementById("generateButton-g5-3").addEventListener("click", functio
 //--------------------------------------------------------------------------------------------------------------------//
 
 // Additional event listener for the new "Generate Prompt" button
-document.getElementById("generateButton").addEventListener("click", function () {
-    generateRandomPrompt(currentPrompts);
+//document.getElementById("generateButton").addEventListener("click", function () {
+    //generateRandomPrompt(currentPrompts);
 });
 
 // ...
