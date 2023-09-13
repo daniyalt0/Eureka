@@ -1,9 +1,6 @@
 // Define prompts for each group and prompt list
 
-//----------------------------------------------------------------------------------------------------------------------//
-
 //g1
-
 let g1Prompts1 = [
     "Prompt 1 for Group 1 - List 1",
     "Prompt 2 for Group 1 - List 1",
@@ -22,19 +19,16 @@ let g1Prompts3 = [
     // Add more prompts for List 3
 ];
 
-//---------------------------------------------------------------------------------------------------------------------------//
-
 //g2
-
 let g2Prompts1 = [
     "Prompt 1 for Group 2 - List 1",
-    "Prompt 2 for Group 2- List 1",
+    "Prompt 2 for Group 2 - List 1",
     // Add more prompts for List 1
 ];
 
 let g2Prompts2 = [
     "Prompt 1 for Group 2 - List 2",
-    "Prompt 2 for Group 2- List 2",
+    "Prompt 2 for Group 2 - List 2",
     // Add more prompts for List 2
 ];
 
@@ -44,19 +38,16 @@ let g2Prompts3 = [
     // Add more prompts for List 3
 ];
 
-//---------------------------------------------------------------------------------------------------------------------------//
-
 //g3
-
 let g3Prompts1 = [
     "Prompt 1 for Group 3 - List 1",
-    "Prompt 2 for Group 3- List 1",
+    "Prompt 2 for Group 3 - List 1",
     // Add more prompts for List 1
 ];
 
 let g3Prompts2 = [
     "Prompt 1 for Group 3 - List 2",
-    "Prompt 2 for Group 3- List 2",
+    "Prompt 2 for Group 3 - List 2",
     // Add more prompts for List 2
 ];
 
@@ -66,19 +57,16 @@ let g3Prompts3 = [
     // Add more prompts for List 3
 ];
 
-//---------------------------------------------------------------------------------------------------------------------------//
-
 //g4
-
 let g4Prompts1 = [
     "Prompt 1 for Group 4 - List 1",
-    "Prompt 2 for Group 4- List 1",
+    "Prompt 2 for Group 4 - List 1",
     // Add more prompts for List 1
 ];
 
 let g4Prompts2 = [
     "Prompt 1 for Group 4 - List 2",
-    "Prompt 2 for Group 4- List 2",
+    "Prompt 2 for Group 4 - List 2",
     // Add more prompts for List 2
 ];
 
@@ -88,19 +76,16 @@ let g4Prompts3 = [
     // Add more prompts for List 3
 ];
 
-//---------------------------------------------------------------------------------------------------------------------------//
-
 //g5
-
 let g5Prompts1 = [
     "Prompt 1 for Group 5 - List 1",
-    "Prompt 2 for Group 5- List 1",
+    "Prompt 2 for Group 5 - List 1",
     // Add more prompts for List 1
 ];
 
 let g5Prompts2 = [
     "Prompt 1 for Group 5 - List 2",
-    "Prompt 2 for Group 5- List 2",
+    "Prompt 2 for Group 5 - List 2",
     // Add more prompts for List 2
 ];
 
@@ -110,17 +95,9 @@ let g5Prompts3 = [
     // Add more prompts for List 3
 ];
 
-//---------------------------------------------------------------------------------------------------------------------------//
-
-// Define prompts for other groups and prompt lists in a similar manner
-// ...
-
 // Event listeners for "Generate Prompt" buttons
 
-//--------------------------------------------------------------------------------------------------------------------//
-
 //g1
-
 document.getElementById("generateButton-g1-1").addEventListener("click", function () {
     generateRandomPrompt(g1Prompts1);
 });
@@ -133,10 +110,7 @@ document.getElementById("generateButton-g1-3").addEventListener("click", functio
     generateRandomPrompt(g1Prompts3);
 });
 
-//--------------------------------------------------------------------------------------------------------------------//
-
 //g2
-
 document.getElementById("generateButton-g2-1").addEventListener("click", function () {
     generateRandomPrompt(g2Prompts1);
 });
@@ -149,10 +123,7 @@ document.getElementById("generateButton-g2-3").addEventListener("click", functio
     generateRandomPrompt(g2Prompts3);
 });
 
-//--------------------------------------------------------------------------------------------------------------------//
-
 //g3
-
 document.getElementById("generateButton-g3-1").addEventListener("click", function () {
     generateRandomPrompt(g3Prompts1);
 });
@@ -165,10 +136,7 @@ document.getElementById("generateButton-g3-3").addEventListener("click", functio
     generateRandomPrompt(g3Prompts3);
 });
 
-//--------------------------------------------------------------------------------------------------------------------//
-
 //g4
-
 document.getElementById("generateButton-g4-1").addEventListener("click", function () {
     generateRandomPrompt(g4Prompts1);
 });
@@ -181,10 +149,7 @@ document.getElementById("generateButton-g4-3").addEventListener("click", functio
     generateRandomPrompt(g4Prompts3);
 });
 
-//--------------------------------------------------------------------------------------------------------------------//
-
 //g5
-
 document.getElementById("generateButton-g5-1").addEventListener("click", function () {
     generateRandomPrompt(g5Prompts1);
 });
@@ -196,8 +161,6 @@ document.getElementById("generateButton-g5-2").addEventListener("click", functio
 document.getElementById("generateButton-g5-3").addEventListener("click", function () {
     generateRandomPrompt(g5Prompts3);
 });
-
-//--------------------------------------------------------------------------------------------------------------------//
 
 // Initialize the "Generate Prompt" button as disabled by default
 const generateButton = document.getElementById("generateButton");
@@ -235,10 +198,14 @@ groupSelection.addEventListener("change", function () {
     generateButton.disabled = false;
 });
 
-function generateRandomPrompt(prompts) {
-    // Generate prompts from the specified list
-    // ...
+let clickCount = 0;
+let loggedPrompts = [];
+const clickCountDisplay = document.getElementById("clickCountDisplay");
+const promptDisplay = document.getElementById("promptDisplay");
+const timestampList = document.getElementById("timestampList");
+const hearButton = document.getElementById("hearButton");
 
+function generateRandomPrompt(prompts) {
     if (prompts.length === 0) {
         promptDisplay.textContent = "No prompts remaining.";
     } else {
@@ -300,11 +267,8 @@ function hearCurrentPrompt() {
     speakPrompt(currentPromptText);
 }
 
-
 const saveButton = document.getElementById("saveButton");
-const promptDisplay = document.getElementById("promptDisplay");
 const exportMessage = document.getElementById("exportMessage"); // Reference to the "Exported Data Message"
-
 
 saveButton.addEventListener("click", saveLoggedData);
 
@@ -313,7 +277,6 @@ hearButton.addEventListener("click", hearCurrentPrompt);
 
 // Disable the "Hear This Prompt" button initially
 hearButton.disabled = true;
-
 
 function isSpeechSynthesisSupported() {
     return 'speechSynthesis' in window;
