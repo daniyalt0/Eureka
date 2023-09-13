@@ -1,116 +1,120 @@
-let prompts = [
-    "Optimize toothpick module design – explore the concept of modular toothpick units to create a sturdy, load-bearing structure.",
-    "Leverage geometric principles – consider how triangles can serve as the building blocks for your toothpick bridge, providing stability with fewer toothpicks.",
-    "Reflect on tension and compression – how can you apply the principles of tensegrity to create a toothpick bridge that balances forces efficiently?",
-    "Explore tessellations for structural integrity – arrange toothpick shapes in a pattern that strengthens the overall bridge design.",
-    "Challenge yourself with cantilever construction – extend your toothpick bridge to its limits while ensuring it supports the weight of the brick.",
-    "Investigate the potential of toothpick trusses – can you strategically place truss structures to create a lightweight yet robust bridge?",
-    "Think like a minimalist architect – how can you create a functional toothpick bridge with the fewest toothpicks possible?",
-    "Reflect on the concept of load-bearing points – where should you focus toothpick support to maximize your bridge's strength?",
-    "Consider the beauty of simplicity – how can you achieve structural efficiency while maintaining an elegant, minimalist design?",
-    "Innovate toothpick placement by optimizing for balance – how can you strategically distribute toothpicks for the best structural results?",
-    "Challenge the limits of toothpick length – how can you use extended toothpicks creatively to minimize their overall count?",
-    "Explore the concept of toothpick spirals – can a spiraling design enhance both aesthetics and strength while conserving resources?",
-    "Imagine toothpick arches as load-bearing elements – how can you leverage them to reduce the total toothpick requirement?",
-    "Experiment with toothpick weaving patterns – how might unique weaves enhance the bridge's load-bearing capacity?",
-    "Investigate the use of toothpick symmetry – can symmetrical designs achieve stability with fewer toothpicks?",
-    "Reflect on the power of toothpick angles – how can you employ precise angles to maximize strength and minimize material use?",
-    "Utilize toothpick cantilevers to extend support – what innovative cantilever shapes can efficiently hold the weight?",
-    "Explore toothpick diamonds – can these geometric shapes offer a surprising solution for minimizing toothpick use while ensuring stability?",
-    "Investigate the concept of toothpick duality – how might two interlocking components provide increased strength while using fewer toothpicks?",
-    "Strategically layer toothpicks – how can you stack them to maximize support and minimize usage?",
-    "Invent toothpick tension bridges – can you use tension forces to achieve a resource-efficient design?",
-    "Build a toothpick suspension bridge – explore creative ways to suspend your bridge while conserving toothpicks.",
-    "Investigate toothpick helix designs – how can spiraling toothpicks enhance both aesthetics and stability?",
-    "Reflect on toothpick alignment – how might precise alignment contribute to a stronger bridge with fewer toothpicks?",
-    "Optimize toothpick triangulation – what arrangements can maximize structural integrity using minimal toothpicks?",
-    "Explore toothpick patterning – how can repeating patterns create strength while reducing toothpick count?",
-    "Challenge yourself with the toothpick diamond principle – can diamonds be the key to efficiency in your design?",
-    "Investigate the concept of toothpick honeycombs – can hexagonal patterns offer stability with fewer toothpicks?",
-    "Reflect on toothpick reinforcement – how can you strategically reinforce key areas while minimizing overall toothpick usage?",
-    // Add your prompts here
-];
+// Define prompt sets (separate for each set)
+const promptSets = {
+    g1: ["Prompt 1A", "Prompt 1B", "Prompt 1C"],
+    g2: ["Prompt 2A", "Prompt 2B", "Prompt 2C"],
+    g3: ["Prompt 3A", "Prompt 3B", "Prompt 3C"],
+    g4: ["Prompt 4A", "Prompt 4B", "Prompt 4C"],
+    g5: ["Prompt 5A", "Prompt 5B", "Prompt 5C"],
+};
 
-let clickCount = 0;
-const loggedPrompts = [];
+// Initialize selected prompt set
+let selectedPromptSet = "g1";
 
-const clickCountDisplay = document.getElementById("clickCountDisplay");
-const timestampList = document.getElementById("timestampList");
-const hearButton = document.getElementById("hearButton"); // Reference to the "Hear This Prompt" button
-
-function generateRandomPrompt() {
-    if (prompts.length === 0) {
-        promptDisplay.textContent = "No prompts remaining.";
-    } else {
-        clickCount++;
-        const randomIndex = Math.floor(Math.random() * prompts.length);
-        const randomPrompt = prompts[randomIndex];
-        const timestamp = new Date().toLocaleTimeString();
-
-        timestampList.innerHTML = "";
-
-        promptDisplay.textContent = `Prompt #${clickCount}: ${randomPrompt}`;
-        const timestampItem = document.createElement("li");
-        timestampItem.textContent = `${clickCount}: ${randomPrompt} (Generated at ${timestamp})`;
-        timestampItem.style.fontFamily = "Roboto Mono, monospace";
-        timestampList.appendChild(timestampItem);
-
-        loggedPrompts.push({ prompt: randomPrompt, timestamp: timestamp });
-        prompts.splice(randomIndex, 1);
-        clickCountDisplay.textContent = `Click count: ${clickCount}`;
-
-        // Enable the "Hear This Prompt" button after generating a prompt
-        hearButton.disabled = false;
+// Function to generate a random prompt from the selected set
+function generateRandomPrompt(set) {
+    const prompts = promptSets[set];
+    if (!prompts || prompts.length === 0) {
+        return "No prompts available in the selected set.";
     }
+    const randomIndex = Math.floor(Math.random() * prompts.length);
+    return prompts[randomIndex];
 }
 
-function saveLoggedData() {
-    if (loggedPrompts.length > 0) {
-        let csvData = "Prompt Name,Time Stamp\n";
-        for (const loggedPrompt of loggedPrompts) {
-            csvData += `"${loggedPrompt.prompt}","${loggedPrompt.timestamp}"\n`;
-        }
-        csvData += `Total Count,${clickCount}\n`;
+// Function to update the prompt display for a specific set
+function updatePromptDisplay(set) {
+    // Get the prompt display element
+    const promptDisplay = document.getElementById(`promptDisplaySet${set}`);
 
-        exportData(csvData);
+    // Check if the element exists
+    if (!promptDisplay) {
+        console.error(`Prompt display for set ${set} not found.`);
+        return;
     }
+
+    // Generate and set the prompt text
+    const generatedPrompt = generateRandomPrompt(set);
+    promptDisplay.textContent = generatedPrompt;
 }
 
-function exportData(data) {
-    const blob = new Blob([data], { type: 'text/csv' });
-    const url = window.URL.createObjectURL(blob);
+// Event listener for prompt set selection dropdown
+document.getElementById("promptSetSelection").addEventListener("change", function () {
+    selectedPromptSet = this.value;
+    updatePromptDisplay(selectedPromptSet);
+});
 
-    const a = document.createElement('a');
-    a.style.display = 'none';
-    a.href = url;
-    a.download = 'generated_data.csv';
+// Event listeners for "Generate Prompt" buttons for each set
+document.getElementById("generateButtonSet1").addEventListener("click", () => {
+    updatePromptDisplay("g1");
+    incrementClickCount("g1");
+});
+document.getElementById("generateButtonSet2").addEventListener("click", () => {
+    updatePromptDisplay("g2");
+    incrementClickCount("g2");
+});
+document.getElementById("generateButtonSet3").addEventListener("click", () => {
+    updatePromptDisplay("g3");
+    incrementClickCount("g3");
+});
 
-    document.body.appendChild(a);
-    a.click();
+// Separate click counters for each set
+const clickCounts = {
+    g1: 0,
+    g2: 0,
+    g3: 0,
+};
 
-    window.URL.revokeObjectURL(url);
-
-    const exportMessage = document.getElementById("exportMessage");
-    exportMessage.textContent = "Data exported successfully!";
-    exportMessage.style.color = "#556f7b";
+// Function to increment and display the click count for a specific set
+function incrementClickCount(set) {
+    clickCounts[set]++;
+    const clickCountDisplay = document.getElementById(`clickCount${set}`);
+    clickCountDisplay.textContent = `Click count Set ${set}: ${clickCounts[set]}`;
 }
 
-function hearCurrentPrompt() {
-    const currentPromptText = promptDisplay.textContent.replace(/^Prompt \d+: /, ''); // Remove "Prompt #X: "
-    speakPrompt(currentPromptText);
+// Function to handle the "Save Data" button click for a specific set
+function saveData(set) {
+    // Get the click count
+    const clickCount = clickCounts[set];
+
+    // Get the current prompt
+    const promptDisplay = document.getElementById(`promptDisplaySet${set}`);
+    const currentPrompt = promptDisplay.textContent;
+
+    // Get the timestamp
+    const timestamp = new Date().toLocaleString();
+
+    // Create a CSV row with click count, prompt, and timestamp
+    const csvRow = `${clickCount},${currentPrompt},${timestamp}`;
+
+    // Get the exported message element
+    const exportMessage = document.getElementById(`exportMessageSet${set}`);
+
+    // Check if this is the first saved entry
+    if (!exportMessage.textContent) {
+        exportMessage.textContent = "Data exported:";
+    }
+
+    // Create a new list item for the timestamp list
+    const timestampList = document.getElementById(`timestampListSet${set}`);
+    const listItem = document.createElement("li");
+    listItem.textContent = `${currentPrompt} - ${timestamp}`;
+
+    // Append the list item to the timestamp list
+    timestampList.appendChild(listItem);
+
+    // Show the timestamp list
+    document.getElementById(`timestampGridSet${set}`).style.display = "block";
+
+    // Reset click count
+    clickCounts[set] = 0;
+
+    // Log the CSV row to the console (you can remove this in production)
+    console.log(csvRow);
 }
 
-const generateButton = document.getElementById("generateButton");
-const saveButton = document.getElementById("saveButton");
-const promptDisplay = document.getElementById("promptDisplay");
+// Event listeners for the "Save Data" button for each set
+document.getElementById("saveButtonSet1").addEventListener("click", () => saveData("g1"));
+document.getElementById("saveButtonSet2").addEventListener("click", () => saveData("g2"));
+document.getElementById("saveButtonSet3").addEventListener("click", () => saveData("g3"));
 
-generateButton.addEventListener("click", generateRandomPrompt);
-saveButton.addEventListener("click", saveLoggedData);
-
-// Add a click event listener to the "Hear This Prompt" button
-hearButton.addEventListener("click", hearCurrentPrompt);
-
-// Disable the "Hear This Prompt" button initially
-hearButton.disabled = true;
-
-
+// Initial prompt display for the selected set
+updatePromptDisplay(selectedPromptSet);
