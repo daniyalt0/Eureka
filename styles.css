@@ -1,3 +1,14 @@
+/* Style for the group selection dropdown */
+#groupSelection {
+    font-size: 16px;
+    padding: 5px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+/* You can add more specific styles as needed for the dropdown */
+
 /* Reset some default styles */
 body, h1, p, ul, button, select {
     margin: 0;
