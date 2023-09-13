@@ -100,3 +100,18 @@ h1 {
     background-color: #ccc; /* Grayed out when disabled */
     cursor: not-allowed;
 }
+
+/* Apply the same styles as other buttons */
+.save-button {
+    background-color: pastelpeach; /* Change to the desired pastel peach color */
+    color: white; /* Text color */
+    border: none; /* Remove borders */
+    padding: 10px 20px; /* Adjust padding as needed */
+    font-family: "Roboto Mono", monospace; /* Use Roboto Mono font */
+    cursor: pointer; /* Add a pointer cursor on hover */
+    margin-right: 10px; /* Add some spacing between buttons */
+}
+
+.save-button:hover {
+    background-color: #ffaaaa; /* Change the hover color as desired */
+}
