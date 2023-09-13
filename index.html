@@ -10,27 +10,44 @@
     <div class="container">
         <h1>Random Prompt Generator</h1>
 
-        <!-- Generate Prompt Button (pastel blue) -->
-        <button id="generateButton" class="generate-button button-spacing">Generate Prompt</button>
+        <!-- Selection Dropdown -->
+        <select id="promptSetSelection">
+            <option value="g1">Group 1</option>
+            <option value="g2">Group 2</option>
+            <option value="g3">Group 3</option>
+            <option value="g4">Group 4</option>
+            <option value="g5">Group 5</option>
+        </select>
 
-        <!-- "Hear This Prompt" Button (pastel peach) -->
-        <button id="hearButton" class="hear-button button-spacing">Hear This Prompt</button>
-
-        <!-- "Save Data" Button (pastel blue) -->
-        <button id="saveButton" class="generate-button button-spacing">Save Data</button>
+        <!-- Generate Prompt Buttons (pastel blue) -->
+        <button id="generateButtonSet1" class="generate-button button-spacing">Generate Prompt 1</button>
+        <button id="generateButtonSet2" class="generate-button button-spacing">Generate Prompt 2</button>
+        <button id="generateButtonSet3" class="generate-button button-spacing">Generate Prompt 3</button>
 
         <!-- Generated Prompt -->
-        <p id="promptDisplay"></p>
+        <p id="promptDisplaySet1"></p>
+        <p id="promptDisplaySet2"></p>
+        <p id="promptDisplaySet3"></p>
 
-        <!-- Click Count Display -->
-        <p id="clickCountDisplay">Click count: 0</p>
+        <!-- Click Count Displays -->
+        <p id="clickCountSet1">Click count Set 1: 0</p>
+        <p id="clickCountSet2">Click count Set 2: 0</p>
+        <p id="clickCountSet3">Click count Set 3: 0</p>
 
         <!-- Exported Data Message -->
-        <p id="exportMessage" style="color: green;"></p>
+        <p id="exportMessageSet1" style="color: green;"></p>
+        <p id="exportMessageSet2" style="color: green;"></p>
+        <p id="exportMessageSet3" style="color: green;"></p>
 
-        <!-- Timestamp List -->
-        <div id="timestampGrid">
-            <ul id="timestampList"></ul>
+        <!-- Timestamp Lists -->
+        <div id="timestampGridSet1">
+            <ul id="timestampListSet1"></ul>
+        </div>
+        <div id="timestampGridSet2">
+            <ul id="timestampListSet2"></ul>
+        </div>
+        <div id="timestampGridSet3">
+            <ul id="timestampListSet3"></ul>
         </div>
     </div>
 
