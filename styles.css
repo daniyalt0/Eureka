@@ -1,16 +1,5 @@
-/* Style for the group selection dropdown */
-#groupSelection {
-    font-size: 16px;
-    padding: 5px;
-    margin-bottom: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-}
-
-/* You can add more specific styles as needed for the dropdown */
-
 /* Reset some default styles */
-body, h1, p, ul, button, select {
+body, h1, ul {
     margin: 0;
     padding: 0;
 }
@@ -18,93 +7,96 @@ body, h1, p, ul, button, select {
 body {
     font-family: "Roboto Mono", monospace;
     background-color: #f0f0f0;
-    color: #556f7b;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    min-height: 100vh;
+    color: #333;
 }
 
 .container {
-    max-width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
     padding: 20px;
-    box-sizing: border-box;
-    text-align: center;
-    flex-grow: 1;
+    background-color: #fff;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
 }
 
 h1 {
-    color: #333;
+    text-align: center;
     font-size: 24px;
     margin-bottom: 20px;
 }
 
-/* Style for the "Generate Prompt" button (pastel teal) */
+.group-container {
+    display: none; /* Hide all group containers by default */
+}
+
+/* Style the "Generate Prompt" button */
 .generate-button {
-    background-color: #64c2b2;
+    background-color: #aad5c5; /* Pastel teal color */
     color: #fff;
-    padding: 10px 20px;
     border: none;
-    cursor: pointer;
-    font-size: 18px;
-    width: 100%;
-    box-sizing: border-box;
-    margin-bottom: 10px;
-}
-
-/* Style for the "Save Data" button (pastel peach) */
-#saveButtonSet1, #saveButtonSet2, #saveButtonSet3 {
-    background-color: #ff9a8b;
-    color: #fff;
     padding: 10px 20px;
-    border: none;
+    margin: 5px;
+    border-radius: 5px;
     cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.generate-button:hover {
+    background-color: #89b8a5; /* Darker teal on hover */
+}
+
+#promptDisplay {
     font-size: 18px;
-    width: 100%;
-    box-sizing: border-box;
-    margin-bottom: 20px;
+    text-align: center;
+    margin: 20px 0;
 }
 
-/* Add spacing between buttons */
-.button-spacing {
-    margin-bottom: 10px;
-}
-
-.button-container {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    margin-top: 20px;
-}
-
-/* Style for the "Selection Dropdown" */
-#promptSetSelection {
-    padding: 10px;
+#clickCountDisplay {
     font-size: 16px;
+    text-align: center;
+    margin: 10px 0;
 }
 
-/* Style for timestamp lists */
-ul {
-    list-style: none;
+#exportMessage {
+    font-size: 16px;
+    text-align: center;
+    margin: 10px 0;
+}
+
+/* Style the timestamp list */
+#timestampGrid ul {
+    list-style-type: none;
     padding: 0;
-    text-align: left;
-    font-size: 16px;
 }
 
-/* Media Query for Small Screens */
-@media (max-width: 480px) {
-    h1 {
-        font-size: 20px;
-    }
+#timestampGrid li {
+    font-family: "Roboto Mono", monospace;
+    font-size: 14px;
+    margin-bottom: 5px;
+}
 
-    .generate-button,
-    #saveButtonSet1,
-    #saveButtonSet2,
-    #saveButtonSet3 {
-        font-size: 16px;
-    }
+/* Style the group selection dropdown */
+#groupSelection {
+    font-family: "Roboto Mono", monospace;
+    font-size: 16px;
+    padding: 5px;
+    margin-bottom: 20px;
+    width: 100%;
+}
 
-    ul {
-        font-size: 14px;
-    }
+/* Style the "Hear This Prompt" button */
+#hearButton {
+    background-color: #aad5c5; /* Pastel teal color */
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    margin: 10px 0;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#hearButton:disabled {
+    background-color: #ccc; /* Grayed out when disabled */
+    cursor: not-allowed;
 }
