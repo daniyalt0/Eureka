@@ -1,134 +1,185 @@
-// Define prompt sets (separate for each set)
-const promptSets = {
-    g1: ["Prompt 1A", "Prompt 1B", "Prompt 1C"],
-    g2: ["Prompt 2A", "Prompt 2B", "Prompt 2C"],
-    g3: ["Prompt 3A", "Prompt 3B", "Prompt 3C"],
-    g4: ["Prompt 4A", "Prompt 4B", "Prompt 4C"],
-    g5: ["Prompt 5A", "Prompt 5B", "Prompt 5C"],
-};
+// Define prompts for each group
+let g1Prompts = [
+    "Test Prompt 1 for Group 1",
+    "Test Prompt 2 for Group 1",
+    "Test Prompt 3 for Group 1",
+    "Test Prompt 4 for Group 1",
+    "Test Prompt 5 for Group 1",
+];
 
-// Initialize selected prompt set
-let selectedPromptSet = "g1";
+let g2Prompts = [
+    "Test Prompt 1 for Group 2",
+    "Test Prompt 2 for Group 2",
+    "Test Prompt 3 for Group 2",
+    "Test Prompt 4 for Group 2",
+    "Test Prompt 5 for Group 2",
+];
 
-// Function to generate a random prompt from the selected set
-function generateRandomPrompt(set) {
-    const prompts = promptSets[set];
-    if (!prompts || prompts.length === 0) {
-        return "No prompts available in the selected set.";
-    }
-    const randomIndex = Math.floor(Math.random() * prompts.length);
-    return prompts[randomIndex];
-}
+let g3Prompts = [
+    "Test Prompt 1 for Group 3",
+    "Test Prompt 2 for Group 3",
+    "Test Prompt 3 for Group 3",
+    "Test Prompt 4 for Group 3",
+    "Test Prompt 5 for Group 3",
+];
 
-// Function to update the prompt display for a specific set
-function updatePromptDisplay(set) {
-    // Get the prompt display element
-    const promptDisplay = document.getElementById(`promptDisplaySet${set}`);
+let g4Prompts = [
+    "Test Prompt 1 for Group 4",
+    "Test Prompt 2 for Group 4",
+    "Test Prompt 3 for Group 4",
+    "Test Prompt 4 for Group 4",
+    "Test Prompt 5 for Group 4",
+];
 
-    // Check if the element exists
-    if (!promptDisplay) {
-        console.error(`Prompt display for set ${set} not found.`);
-        return;
-    }
+let g5Prompts = [
+    "Test Prompt 1 for Group 5",
+    "Test Prompt 2 for Group 5",
+    "Test Prompt 3 for Group 5",
+    "Test Prompt 4 for Group 5",
+    "Test Prompt 5 for Group 5",
+];
 
-    // Generate and set the prompt text
-    const generatedPrompt = generateRandomPrompt(set);
-    promptDisplay.textContent = generatedPrompt;
-}
+let clickCount = 0;
+const loggedPrompts = [];
 
-// Event listener for prompt set selection dropdown
-document.getElementById("promptSetSelection").addEventListener("change", function () {
-    selectedPromptSet = this.value;
-    updatePromptDisplay(selectedPromptSet);
+const clickCountDisplay = document.getElementById("clickCountDisplay");
+const timestampList = document.getElementById("timestampList");
+const hearButton = document.getElementById("hearButton"); // Reference to the "Hear This Prompt" button
+
+// Event listener for group selection
+const groupSelection = document.getElementById("groupSelection");
+groupSelection.addEventListener("change", function () {
+    const selectedGroup = groupSelection.value;
+    // Hide all groups
+    const allGroups = document.querySelectorAll(".container");
+    allGroups.forEach(group => group.style.display = "none");
+    // Show the selected group
+    const selectedGroupDiv = document.getElementById(`group-${selectedGroup}`);
+    selectedGroupDiv.style.display = "block";
+    // Clear the click count and reset logged prompts
+    clickCount = 0;
+    loggedPrompts.length = 0;
+    clickCountDisplay.textContent = "Click count: 0";
+    promptDisplay.textContent = "";
+    exportMessage.textContent = "";
+    hearButton.disabled = true;
 });
 
-// Event listeners for "Generate Prompt" buttons for each set
-document.getElementById("generateButtonSet1").addEventListener("click", () => {
-    updatePromptDisplay("g1");
-    incrementClickCount("g1");
-});
-document.getElementById("generateButtonSet2").addEventListener("click", () => {
-    updatePromptDisplay("g2");
-    incrementClickCount("g2");
-});
-document.getElementById("generateButtonSet3").addEventListener("click", () => {
-    updatePromptDisplay("g3");
-    incrementClickCount("g3");
-});
-document.getElementById("generateButtonSet4").addEventListener("click", () => {
-    updatePromptDisplay("g4");
-    incrementClickCount("g4");
-});
-document.getElementById("generateButtonSet5").addEventListener("click", () => {
-    updatePromptDisplay("g5");
-    incrementClickCount("g5");
-});
+function generateRandomPrompt() {
+    const selectedGroup = groupSelection.value;
+    let prompts;
 
-// Separate click counters for each set
-const clickCounts = {
-    g1: 0,
-    g2: 0,
-    g3: 0,
-    g4: 0,
-    g5: 0,
-};
-
-// Function to increment and display the click count for a specific set
-function incrementClickCount(set) {
-    clickCounts[set]++;
-    const clickCountDisplay = document.getElementById(`clickCountSet${set}`);
-    if (clickCountDisplay) {
-        clickCountDisplay.textContent = `Click count Set ${set}: ${clickCounts[set]}`;
-    }
-}
-
-// Rest of your code...
-
-// Function to handle the "Save Data" button click for a specific set
-function saveData(set) {
-    // Get the click count
-    const clickCount = clickCounts[set];
-
-    // Get the current prompt
-    const promptDisplay = document.getElementById(`promptDisplaySet${set}`);
-    const currentPrompt = promptDisplay.textContent;
-
-    // Get the timestamp
-    const timestamp = new Date().toLocaleString();
-
-    // Create a CSV row with click count, prompt, and timestamp
-    const csvRow = `${clickCount},${currentPrompt},${timestamp}`;
-
-    // Get the exported message element
-    const exportMessage = document.getElementById(`exportMessageSet${set}`);
-
-    // Check if this is the first saved entry
-    if (!exportMessage.textContent) {
-        exportMessage.textContent = "Data exported:";
+    switch (selectedGroup) {
+        case "g1":
+            prompts = g1Prompts;
+            break;
+        case "g2":
+            prompts = g2Prompts;
+            break;
+        case "g3":
+            prompts = g3Prompts;
+            break;
+        case "g4":
+            prompts = g4Prompts;
+            break;
+        case "g5":
+            prompts = g5Prompts;
+            break;
+        default:
+            prompts = [];
     }
 
-    // Create a new list item for the timestamp list
-    const timestampList = document.getElementById(`timestampListSet${set}`);
-    const listItem = document.createElement("li");
-    listItem.textContent = `${currentPrompt} - ${timestamp}`;
+    if (prompts.length === 0) {
+        promptDisplay.textContent = "No prompts remaining.";
+    } else {
+        clickCount++;
+        const randomIndex = Math.floor(Math.random() * prompts.length);
+        const randomPrompt = prompts[randomIndex];
+        const timestamp = new Date().toLocaleTimeString();
 
-    // Append the list item to the timestamp list
-    timestampList.appendChild(listItem);
+        timestampList.innerHTML = "";
 
-    // Show the timestamp list
-    document.getElementById(`timestampGridSet${set}`).style.display = "block";
+        promptDisplay.textContent = `Prompt #${clickCount}: ${randomPrompt}`;
+        const timestampItem = document.createElement("li");
+        timestampItem.textContent = `${clickCount}: ${randomPrompt} (Generated at ${timestamp})`;
+        timestampItem.style.fontFamily = "Roboto Mono, monospace";
+        timestampList.appendChild(timestampItem);
 
-    // Reset click count
-    clickCounts[set] = 0;
+        loggedPrompts.push({ prompt: randomPrompt, timestamp: timestamp });
+        prompts.splice(randomIndex, 1);
+        clickCountDisplay.textContent = `Click count: ${clickCount}`;
 
-    // Log the CSV row to the console (you can remove this in production)
-    console.log(csvRow);
+        // Enable the "Hear This Prompt" button after generating a prompt
+        hearButton.disabled = false;
+    }
 }
 
-// Event listeners for the "Save Data" button for each set
-document.getElementById("saveButtonSet1").addEventListener("click", () => saveData("g1"));
-document.getElementById("saveButtonSet2").addEventListener("click", () => saveData("g2"));
-document.getElementById("saveButtonSet3").addEventListener("click", () => saveData("g3"));
+function saveLoggedData() {
+    if (loggedPrompts.length > 0) {
+        let csvData = "Prompt Name,Time Stamp\n";
+        for (const loggedPrompt of loggedPrompts) {
+            csvData += `"${loggedPrompt.prompt}","${loggedPrompt.timestamp}"\n`;
+        }
+        csvData += `Total Count,${clickCount}\n`;
 
-// Initial prompt display for the selected set
-updatePromptDisplay(selectedPromptSet);
+        exportData(csvData);
+    }
+}
+
+function exportData(data) {
+    const blob = new Blob([data], { type: 'text/csv' });
+    const url = window.URL.createObjectURL(blob);
+
+    const a = document.createElement('a');
+    a.style.display = 'none';
+    a.href = url;
+    a.download = 'generated_data.csv';
+
+    document.body.appendChild(a);
+    a.click();
+
+    window.URL.revokeObjectURL(url);
+
+    const exportMessage = document.getElementById("exportMessage");
+    exportMessage.textContent = "Data exported successfully!";
+    exportMessage.style.color = "#556f7b";
+}
+
+function hearCurrentPrompt() {
+    const currentPromptText = promptDisplay.textContent.replace(/^Prompt \d+: /, ''); // Remove "Prompt #X: "
+    speakPrompt(currentPromptText);
+}
+
+const generateButton = document.getElementById("generateButton");
+const saveButton = document.getElementById("saveButton");
+const promptDisplay = document.getElementById("promptDisplay");
+const exportMessage = document.getElementById("exportMessage"); // Reference to the "Exported Data Message"
+
+generateButton.addEventListener("click", generateRandomPrompt);
+saveButton.addEventListener("click", saveLoggedData);
+
+// Add a click event listener to the "Hear This Prompt" button
+hearButton.addEventListener("click", hearCurrentPrompt);
+
+// Disable the "Hear This Prompt" button initially
+hearButton.disabled = true;
+
+function isSpeechSynthesisSupported() {
+    return 'speechSynthesis' in window;
+}
+
+function speakPrompt(promptText) {
+    if (isSpeechSynthesisSupported()) {
+        const utterance = new SpeechSynthesisUtterance(promptText);
+        speechSynthesis.speak(utterance);
+    } else {
+        alert("Speech synthesis is not supported in this browser.");
+    }
+}
+
+/* styles.css */
+
+// The CSS code remains the same as your original code with the addition of the group selection styling.
+// You can refer to the previous CSS code provided.
+
+// Media query and other styles from your original code also remain unchanged.
