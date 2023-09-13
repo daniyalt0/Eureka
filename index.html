@@ -4,106 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Prompt Randomizer</title>
-    <style>
-        /* Global Styles */
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f0f0f0;
-            margin: 0;
-            padding: 0;
-        }
-
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-            background-color: #ffffff;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-
-        h1 {
-            font-size: 24px;
-            text-align: center;
-        }
-
-        /* Group Selection Styles */
-        #groupSelection {
-            font-size: 16px;
-            padding: 5px;
-            margin-bottom: 10px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-        }
-
-        /* Group Container Styles */
-        .group-container {
-            display: none;
-        }
-
-        /* Button Styles */
-        .generate-button, .hear-button {
-            background-color: #3498db;
-            color: #ffffff;
-            border: none;
-            border-radius: 4px;
-            padding: 10px 20px;
-            cursor: pointer;
-            margin-top: 10px;
-        }
-
-        .generate-button.button-spacing {
-            margin-right: 10px;
-        }
-
-        .hear-button {
-            background-color: #ff6b6b;
-        }
-
-        .hear-button:disabled {
-            background-color: #ccc;
-            cursor: not-allowed;
-        }
-
-        /* Prompt Display Styles */
-        #promptDisplay {
-            font-size: 18px;
-            margin-top: 20px;
-        }
-
-        /* Click Count Display Styles */
-        #clickCountDisplay {
-            font-size: 16px;
-            margin-top: 10px;
-        }
-
-        /* Exported Data Message Styles */
-        #exportMessage {
-            font-size: 16px;
-            margin-top: 10px;
-            font-weight: bold;
-        }
-
-        #exportMessage.success {
-            color: green;
-        }
-
-        /* Timestamp List Styles */
-        #timestampGrid {
-            margin-top: 20px;
-        }
-
-        #timestampList {
-            list-style: none;
-            padding: 0;
-        }
-
-        #timestampList li {
-            font-family: "Roboto Mono", monospace;
-            font-size: 14px;
-            margin-bottom: 5px;
-        }
-    </style>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="container">
@@ -118,35 +19,42 @@
             <option value="g5">Group 5</option>
         </select>
 
-        <!-- Create separate divs for each group -->
+        <!-- Create separate divs for each group with three prompt lists -->
         <div class="group-container" id="group-g1">
-            <!-- Group 1 prompts go here -->
+            <!-- Group 1 prompts for List 1 -->
+            <button class="generate-button" id="generateButton-g1-1">Generate Prompt 1</button>
+            <button class="generate-button" id="generateButton-g1-2">Generate Prompt 2</button>
+            <button class="generate-button" id="generateButton-g1-3">Generate Prompt 3</button>
         </div>
-
         <div class="group-container" id="group-g2">
-            <!-- Group 2 prompts go here -->
+            <!-- Group 1 prompts for List 1 -->
+            <button class="generate-button" id="generateButton-g2-1">Generate Prompt 1</button>
+            <button class="generate-button" id="generateButton-g2-2">Generate Prompt 2</button>
+            <button class="generate-button" id="generateButton-g2-3">Generate Prompt 3</button>
         </div>
-
         <div class="group-container" id="group-g3">
-            <!-- Group 3 prompts go here -->
+            <!-- Group 1 prompts for List 1 -->
+            <button class="generate-button" id="generateButton-g3-1">Generate Prompt 1</button>
+            <button class="generate-button" id="generateButton-g3-2">Generate Prompt 2</button>
+            <button class="generate-button" id="generateButton-g3-3">Generate Prompt 3</button>
         </div>
-
         <div class="group-container" id="group-g4">
-            <!-- Group 4 prompts go here -->
+            <!-- Group 1 prompts for List 1 -->
+            <button class="generate-button" id="generateButton-g4-1">Generate Prompt 1</button>
+            <button class="generate-button" id="generateButton-g4-2">Generate Prompt 2</button>
+            <button class="generate-button" id="generateButton-g4-3">Generate Prompt 3</button>
+        </div>
+        <div class="group-container" id="group-g3">
+            <!-- Group 1 prompts for List 1 -->
+            <button class="generate-button" id="generateButton-g5-1">Generate Prompt 1</button>
+            <button class="generate-button" id="generateButton-g5-2">Generate Prompt 2</button>
+            <button class="generate-button" id="generateButton-g5-3">Generate Prompt 3</button>
         </div>
 
-        <div class="group-container" id="group-g5">
-            <!-- Group 5 prompts go here -->
-        </div>
 
-        <!-- Generate Prompt Button (pastel blue) -->
-        <button id="generateButton" class="generate-button button-spacing">Generate Prompt</button>
 
-        <!-- "Hear This Prompt" Button (pastel peach) -->
-        <button id="hearButton" class="hear-button button-spacing" disabled>Hear This Prompt</button>
-
-        <!-- "Save Data" Button (pastel blue) -->
-        <button id="saveButton" class="generate-button button-spacing">Save Data</button>
+        <!-- Repeat the above structure for groups g2, g3, g4, and g5 -->
+        <!-- Remember to update IDs and button labels accordingly -->
 
         <!-- Generated Prompt -->
         <p id="promptDisplay"></p>
@@ -155,7 +63,7 @@
         <p id="clickCountDisplay">Click count: 0</p>
 
         <!-- Exported Data Message -->
-        <p id="exportMessage" class="success"></p>
+        <p id="exportMessage" style="color: green;"></p>
 
         <!-- Timestamp List -->
         <div id="timestampGrid">
