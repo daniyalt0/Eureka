@@ -67,6 +67,10 @@ const clickCounts = {
 function incrementClickCount(set) {
     clickCounts[set]++;
     const clickCountDisplay = document.getElementById(`clickCount${set}`);
+    if (!clickCountDisplay) {
+        console.error(`Click count display for set ${set} not found.`);
+        return;
+    }
     clickCountDisplay.textContent = `Click count Set ${set}: ${clickCounts[set]}`;
 }
 
@@ -77,6 +81,10 @@ function saveData(set) {
 
     // Get the current prompt
     const promptDisplay = document.getElementById(`promptDisplaySet${set}`);
+    if (!promptDisplay) {
+        console.error(`Prompt display for set ${set} not found.`);
+        return;
+    }
     const currentPrompt = promptDisplay.textContent;
 
     // Get the timestamp
@@ -89,12 +97,20 @@ function saveData(set) {
     const exportMessage = document.getElementById(`exportMessageSet${set}`);
 
     // Check if this is the first saved entry
+    if (!exportMessage) {
+        console.error(`Export message for set ${set} not found.`);
+        return;
+    }
     if (!exportMessage.textContent) {
         exportMessage.textContent = "Data exported:";
     }
 
     // Create a new list item for the timestamp list
     const timestampList = document.getElementById(`timestampListSet${set}`);
+    if (!timestampList) {
+        console.error(`Timestamp list for set ${set} not found.`);
+        return;
+    }
     const listItem = document.createElement("li");
     listItem.textContent = `${currentPrompt} - ${timestamp}`;
 
@@ -102,7 +118,10 @@ function saveData(set) {
     timestampList.appendChild(listItem);
 
     // Show the timestamp list
-    document.getElementById(`timestampGridSet${set}`).style.display = "block";
+    const timestampGrid = document.getElementById(`timestampGridSet${set}`);
+    if (timestampGrid) {
+        timestampGrid.style.display = "block";
+    }
 
     // Reset click count
     clickCounts[set] = 0;
