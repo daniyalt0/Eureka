@@ -1,41 +1,213 @@
-// Define prompts for each group
-const promptsByGroup = {
-    g1: [
-        "Test Prompt 1 for Group 1",
-        "Test Prompt 2 for Group 1",
-        "Test Prompt 3 for Group 1",
-        "Test Prompt 4 for Group 1",
-        "Test Prompt 5 for Group 1",
-    ],
-    g2: [
-        "Test Prompt 1 for Group 2",
-        "Test Prompt 2 for Group 2",
-        "Test Prompt 3 for Group 2",
-        "Test Prompt 4 for Group 2",
-        "Test Prompt 5 for Group 2",
-    ],
-    g3: [
-        "Test Prompt 1 for Group 3",
-        "Test Prompt 2 for Group 3",
-        "Test Prompt 3 for Group 3",
-        "Test Prompt 4 for Group 3",
-        "Test Prompt 5 for Group 3",
-    ],
-    g4: [
-        "Test Prompt 1 for Group 4",
-        "Test Prompt 2 for Group 4",
-        "Test Prompt 3 for Group 4",
-        "Test Prompt 4 for Group 4",
-        "Test Prompt 5 for Group 4",
-    ],
-    g5: [
-        "Test Prompt 1 for Group 5",
-        "Test Prompt 2 for Group 5",
-        "Test Prompt 3 for Group 5",
-        "Test Prompt 4 for Group 5",
-        "Test Prompt 5 for Group 5",
-    ],
-};
+// Define prompts for each group and prompt list
+
+//----------------------------------------------------------------------------------------------------------------------//
+
+//g1
+
+let g1Prompts1 = [
+    "Prompt 1 for Group 1 - List 1",
+    "Prompt 2 for Group 1 - List 1",
+    // Add more prompts for List 1
+];
+
+let g1Prompts2 = [
+    "Prompt 1 for Group 1 - List 2",
+    "Prompt 2 for Group 1 - List 2",
+    // Add more prompts for List 2
+];
+
+let g1Prompts3 = [
+    "Prompt 1 for Group 1 - List 3",
+    "Prompt 2 for Group 1 - List 3",
+    // Add more prompts for List 3
+];
+
+//---------------------------------------------------------------------------------------------------------------------------//
+
+//g2
+
+let g2Prompts1 = [
+    "Prompt 1 for Group 2 - List 1",
+    "Prompt 2 for Group 2- List 1",
+    // Add more prompts for List 1
+];
+
+let g2Prompts2 = [
+    "Prompt 1 for Group 2 - List 2",
+    "Prompt 2 for Group 2- List 2",
+    // Add more prompts for List 2
+];
+
+let g2Prompts3 = [
+    "Prompt 1 for Group 2 - List 3",
+    "Prompt 2 for Group 2 - List 3",
+    // Add more prompts for List 3
+];
+
+//---------------------------------------------------------------------------------------------------------------------------//
+
+//g3
+
+let g3Prompts1 = [
+    "Prompt 1 for Group 3 - List 1",
+    "Prompt 2 for Group 3- List 1",
+    // Add more prompts for List 1
+];
+
+let g3Prompts2 = [
+    "Prompt 1 for Group 3 - List 2",
+    "Prompt 2 for Group 3- List 2",
+    // Add more prompts for List 2
+];
+
+let g3Prompts3 = [
+    "Prompt 1 for Group 3 - List 3",
+    "Prompt 2 for Group 3 - List 3",
+    // Add more prompts for List 3
+];
+
+//---------------------------------------------------------------------------------------------------------------------------//
+
+//g4
+
+let g4Prompts1 = [
+    "Prompt 1 for Group 4 - List 1",
+    "Prompt 2 for Group 4- List 1",
+    // Add more prompts for List 1
+];
+
+let g4Prompts2 = [
+    "Prompt 1 for Group 4 - List 2",
+    "Prompt 2 for Group 4- List 2",
+    // Add more prompts for List 2
+];
+
+let g4Prompts3 = [
+    "Prompt 1 for Group 4 - List 3",
+    "Prompt 2 for Group 4 - List 3",
+    // Add more prompts for List 3
+];
+
+//---------------------------------------------------------------------------------------------------------------------------//
+
+//g5
+
+let g5Prompts1 = [
+    "Prompt 1 for Group 5 - List 1",
+    "Prompt 2 for Group 5- List 1",
+    // Add more prompts for List 1
+];
+
+let g5Prompts2 = [
+    "Prompt 1 for Group 5 - List 2",
+    "Prompt 2 for Group 5- List 2",
+    // Add more prompts for List 2
+];
+
+let g5Prompts3 = [
+    "Prompt 1 for Group 5 - List 3",
+    "Prompt 2 for Group 5 - List 3",
+    // Add more prompts for List 3
+];
+
+//---------------------------------------------------------------------------------------------------------------------------//
+
+
+// Define prompts for other groups and prompt lists in a similar manner
+// ...
+
+// Event listeners for "Generate Prompt" buttons
+
+//--------------------------------------------------------------------------------------------------------------------//
+
+//g1
+
+document.getElementById("generateButton-g1-1").addEventListener("click", function () {
+    generateRandomPrompt(g1Prompts1);
+});
+
+document.getElementById("generateButton-g1-2").addEventListener("click", function () {
+    generateRandomPrompt(g1Prompts2);
+});
+
+document.getElementById("generateButton-g1-3").addEventListener("click", function () {
+    generateRandomPrompt(g1Prompts3);
+});
+
+//--------------------------------------------------------------------------------------------------------------------//
+
+//g2
+
+document.getElementById("generateButton-g2-1").addEventListener("click", function () {
+    generateRandomPrompt(g2Prompts1);
+});
+
+document.getElementById("generateButton-g2-2").addEventListener("click", function () {
+    generateRandomPrompt(g2Prompts2);
+});
+
+document.getElementById("generateButton-g2-3").addEventListener("click", function () {
+    generateRandomPrompt(g2Prompts3);
+});
+
+//--------------------------------------------------------------------------------------------------------------------//
+
+//g3
+
+document.getElementById("generateButton-g3-1").addEventListener("click", function () {
+    generateRandomPrompt(g3Prompts1);
+});
+
+document.getElementById("generateButton-g3-2").addEventListener("click", function () {
+    generateRandomPrompt(g3Prompts2);
+});
+
+document.getElementById("generateButton-g3-3").addEventListener("click", function () {
+    generateRandomPrompt(g3Prompts3);
+});
+
+//--------------------------------------------------------------------------------------------------------------------//
+
+//g4
+
+document.getElementById("generateButton-g4-1").addEventListener("click", function () {
+    generateRandomPrompt(g4Prompts1);
+});
+
+document.getElementById("generateButton-g4-2").addEventListener("click", function () {
+    generateRandomPrompt(g4Prompts2);
+});
+
+document.getElementById("generateButton-g4-3").addEventListener("click", function () {
+    generateRandomPrompt(g4Prompts3);
+});
+
+//--------------------------------------------------------------------------------------------------------------------//
+
+//g5
+
+document.getElementById("generateButton-g5-1").addEventListener("click", function () {
+    generateRandomPrompt(g5Prompts1);
+});
+
+document.getElementById("generateButton-g5-2").addEventListener("click", function () {
+    generateRandomPrompt(g5Prompts2);
+});
+
+document.getElementById("generateButton-g5-3").addEventListener("click", function () {
+    generateRandomPrompt(g5Prompts3);
+});
+
+//--------------------------------------------------------------------------------------------------------------------//
+
+
+
+// Repeat the above event listeners for all groups and prompt lists.
+
+
+
+
+// ...
 
 let clickCount = 0;
 const loggedPrompts = [];
@@ -46,18 +218,14 @@ const hearButton = document.getElementById("hearButton"); // Reference to the "H
 
 // Event listener for group selection
 const groupSelection = document.getElementById("groupSelection");
-const groupContainers = document.querySelectorAll(".group-container");
-
 groupSelection.addEventListener("change", function () {
     const selectedGroup = groupSelection.value;
-
-    // Hide all group containers
-    groupContainers.forEach(group => group.style.display = "none");
-
-    // Show the selected group container
-    const selectedGroupContainer = document.getElementById(`group-${selectedGroup}`);
-    selectedGroupContainer.style.display = "block";
-
+    // Hide all groups
+    const allGroups = document.querySelectorAll(".container");
+    allGroups.forEach(group => group.style.display = "none");
+    // Show the selected group
+    const selectedGroupDiv = document.getElementById(`group-${selectedGroup}`);
+    selectedGroupDiv.style.display = "block";
     // Clear the click count and reset logged prompts
     clickCount = 0;
     loggedPrompts.length = 0;
@@ -67,11 +235,11 @@ groupSelection.addEventListener("change", function () {
     hearButton.disabled = true;
 });
 
-function generateRandomPrompt() {
-    const selectedGroup = groupSelection.value;
-    const prompts = promptsByGroup[selectedGroup];
+function generateRandomPrompt(prompts) {
+    // Generate prompts from the specified list
+    // ...
 
-    if (!prompts || prompts.length === 0) {
+    if (prompts.length === 0) {
         promptDisplay.textContent = "No prompts remaining.";
     } else {
         clickCount++;
@@ -159,5 +327,9 @@ function speakPrompt(promptText) {
     }
 }
 
-// Initialize with the default group
-groupSelection.dispatchEvent(new Event("change"));
+/* styles.css */
+
+// The CSS code remains the same as your original code with the addition of the group selection styling.
+// You can refer to the previous CSS code provided.
+
+// Media query and other styles from your original code also remain unchanged.
