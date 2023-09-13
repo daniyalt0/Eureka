@@ -170,12 +170,16 @@ generateButton.disabled = true; // Disable it by default
 const groupSelection = document.getElementById("groupSelection");
 groupSelection.addEventListener("change", function () {
     const selectedGroup = groupSelection.value;
+    const selectedList = listSelection.value; // Assuming you have a listSelection element
+
     // Hide all groups
     const allGroups = document.querySelectorAll(".group-container");
     allGroups.forEach(group => group.style.display = "none");
+    
     // Show the selected group
     const selectedGroupDiv = document.getElementById(`group-${selectedGroup}`);
     selectedGroupDiv.style.display = "block";
+
     // Clear the click count and reset logged prompts
     clickCount = 0;
     loggedPrompts.length = 0;
@@ -183,81 +187,80 @@ groupSelection.addEventListener("change", function () {
     promptDisplay.textContent = "";
     exportMessage.textContent = "";
     hearButton.disabled = true;
-    // Update the current prompts based on the selected group
-    switch (selectedGroup) {
-    case "g1":
-        switch (selectedList) {
-            case "list1":
-                currentPrompts = g1Prompts1;
-                break;
-            case "list2":
-                currentPrompts = g1Prompts2;
-                break;
-            case "list3":
-                currentPrompts = g1Prompts3;
-                break;
-        }
-        break;
-    case "g2":
-        switch (selectedList) {
-            case "list1":
-                currentPrompts = g2Prompts1;
-                break;
-            case "list2":
-                currentPrompts = g2Prompts2;
-                break;
-            case "list3":
-                currentPrompts = g2Prompts3;
-                break;
-        }
-        break;
-    case "g3":
-        switch (selectedList) {
-            case "list1":
-                currentPrompts = g3Prompts1;
-                break;
-            case "list2":
-                currentPrompts = g3Prompts2;
-                break;
-            case "list3":
-                currentPrompts = g3Prompts3;
-                break;
-        }
-        break;
-    case "g4":
-        switch (selectedList) {
-            case "list1":
-                currentPrompts = g4Prompts1;
-                break;
-            case "list2":
-                currentPrompts = g4Prompts2;
-                break;
-            case "list3":
-                currentPrompts = g4Prompts3;
-                break;
-        }
-        break;
-    case "g5":
-        switch (selectedList) {
-            case "list1":
-                currentPrompts = g5Prompts1;
-                break;
-            case "list2":
-                currentPrompts = g5Prompts2;
-                break;
-            case "list3":
-                currentPrompts = g5Prompts3;
-                break;
-        }
-        break;
-    default:
-        // Handle the case where none of the groups match (if needed)
-}
 
- 
+    // Update the current prompts based on the selected group and list
+    switch (selectedGroup) {
+        case "g1":
+            switch (selectedList) {
+                case "list1":
+                    currentPrompts = g1Prompts1;
+                    break;
+                case "list2":
+                    currentPrompts = g1Prompts2;
+                    break;
+                case "list3":
+                    currentPrompts = g1Prompts3;
+                    break;
+            }
+            break;
+        case "g2":
+            switch (selectedList) {
+                case "list1":
+                    currentPrompts = g2Prompts1;
+                    break;
+                case "list2":
+                    currentPrompts = g2Prompts2;
+                    break;
+                case "list3":
+                    currentPrompts = g2Prompts3;
+                    break;
+            }
+            break;
+        case "g3":
+            switch (selectedList) {
+                case "list1":
+                    currentPrompts = g3Prompts1;
+                    break;
+                case "list2":
+                    currentPrompts = g3Prompts2;
+                    break;
+                case "list3":
+                    currentPrompts = g3Prompts3;
+                    break;
+            }
+            break;
+        case "g4":
+            switch (selectedList) {
+                case "list1":
+                    currentPrompts = g4Prompts1;
+                    break;
+                case "list2":
+                    currentPrompts = g4Prompts2;
+                    break;
+                case "list3":
+                    currentPrompts = g4Prompts3;
+                    break;
+            }
+            break;
+        case "g5":
+            switch (selectedList) {
+                case "list1":
+                    currentPrompts = g5Prompts1;
+                    break;
+                case "list2":
+                    currentPrompts = g5Prompts2;
+                    break;
+                case "list3":
+                    currentPrompts = g5Prompts3;
+                    break;
+            }
+            break;
+        default:
+            // Handle the case where none of the groups match (if needed)
+    }
 
     // Toggle the visibility of the non-group "Generate Prompt" button
-    const nonGroupButton = document.getElementById("generateButton");
+    const nonGroupButton = document.querySelector(".non-group-button");
     if (selectedGroup === "none") {
         nonGroupButton.style.display = "block"; // Show the button
     } else {
@@ -265,9 +268,9 @@ groupSelection.addEventListener("change", function () {
     }
 });
 
-    // Enable the "Generate Prompt" button when a group is selected
-    generateButton.disabled = false;
-});
+// Enable the "Generate Prompt" button when a group is selected
+generateButton.disabled = false;
+
 
 let clickCount = 0;
 let loggedPrompts = [];
