@@ -194,6 +194,15 @@ groupSelection.addEventListener("change", function () {
         // Repeat the switch cases for other groups as needed
     }
 
+    // Toggle the visibility of the non-group "Generate Prompt" button
+    const nonGroupButton = document.getElementById("generateButton");
+    if (selectedGroup === "none") {
+        nonGroupButton.style.display = "block"; // Show the button
+    } else {
+        nonGroupButton.style.display = "none"; // Hide the button
+    }
+});
+
     // Enable the "Generate Prompt" button when a group is selected
     generateButton.disabled = false;
 });
