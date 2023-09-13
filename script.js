@@ -185,14 +185,76 @@ groupSelection.addEventListener("change", function () {
     hearButton.disabled = true;
     // Update the current prompts based on the selected group
     switch (selectedGroup) {
-        case "g1":
-            currentPrompts = g1Prompts1; // Set the prompts for the selected group
-            break;
-        case "g2":
-            currentPrompts = g2Prompts1; // Set the prompts for the selected group
-            break;
-        // Repeat the switch cases for other groups as needed
-    }
+    case "g1":
+        switch (selectedList) {
+            case "list1":
+                currentPrompts = g1Prompts1;
+                break;
+            case "list2":
+                currentPrompts = g1Prompts2;
+                break;
+            case "list3":
+                currentPrompts = g1Prompts3;
+                break;
+        }
+        break;
+    case "g2":
+        switch (selectedList) {
+            case "list1":
+                currentPrompts = g2Prompts1;
+                break;
+            case "list2":
+                currentPrompts = g2Prompts2;
+                break;
+            case "list3":
+                currentPrompts = g2Prompts3;
+                break;
+        }
+        break;
+    case "g3":
+        switch (selectedList) {
+            case "list1":
+                currentPrompts = g3Prompts1;
+                break;
+            case "list2":
+                currentPrompts = g3Prompts2;
+                break;
+            case "list3":
+                currentPrompts = g3Prompts3;
+                break;
+        }
+        break;
+    case "g4":
+        switch (selectedList) {
+            case "list1":
+                currentPrompts = g4Prompts1;
+                break;
+            case "list2":
+                currentPrompts = g4Prompts2;
+                break;
+            case "list3":
+                currentPrompts = g4Prompts3;
+                break;
+        }
+        break;
+    case "g5":
+        switch (selectedList) {
+            case "list1":
+                currentPrompts = g5Prompts1;
+                break;
+            case "list2":
+                currentPrompts = g5Prompts2;
+                break;
+            case "list3":
+                currentPrompts = g5Prompts3;
+                break;
+        }
+        break;
+    default:
+        // Handle the case where none of the groups match (if needed)
+}
+
+ 
 
     // Toggle the visibility of the non-group "Generate Prompt" button
     const nonGroupButton = document.getElementById("generateButton");
