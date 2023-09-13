@@ -1,43 +1,41 @@
 // Define prompts for each group
-let g1Prompts = [
-    "Test Prompt 1 for Group 1",
-    "Test Prompt 2 for Group 1",
-    "Test Prompt 3 for Group 1",
-    "Test Prompt 4 for Group 1",
-    "Test Prompt 5 for Group 1",
-];
-
-let g2Prompts = [
-    "Test Prompt 1 for Group 2",
-    "Test Prompt 2 for Group 2",
-    "Test Prompt 3 for Group 2",
-    "Test Prompt 4 for Group 2",
-    "Test Prompt 5 for Group 2",
-];
-
-let g3Prompts = [
-    "Test Prompt 1 for Group 3",
-    "Test Prompt 2 for Group 3",
-    "Test Prompt 3 for Group 3",
-    "Test Prompt 4 for Group 3",
-    "Test Prompt 5 for Group 3",
-];
-
-let g4Prompts = [
-    "Test Prompt 1 for Group 4",
-    "Test Prompt 2 for Group 4",
-    "Test Prompt 3 for Group 4",
-    "Test Prompt 4 for Group 4",
-    "Test Prompt 5 for Group 4",
-];
-
-let g5Prompts = [
-    "Test Prompt 1 for Group 5",
-    "Test Prompt 2 for Group 5",
-    "Test Prompt 3 for Group 5",
-    "Test Prompt 4 for Group 5",
-    "Test Prompt 5 for Group 5",
-];
+const promptsByGroup = {
+    g1: [
+        "Test Prompt 1 for Group 1",
+        "Test Prompt 2 for Group 1",
+        "Test Prompt 3 for Group 1",
+        "Test Prompt 4 for Group 1",
+        "Test Prompt 5 for Group 1",
+    ],
+    g2: [
+        "Test Prompt 1 for Group 2",
+        "Test Prompt 2 for Group 2",
+        "Test Prompt 3 for Group 2",
+        "Test Prompt 4 for Group 2",
+        "Test Prompt 5 for Group 2",
+    ],
+    g3: [
+        "Test Prompt 1 for Group 3",
+        "Test Prompt 2 for Group 3",
+        "Test Prompt 3 for Group 3",
+        "Test Prompt 4 for Group 3",
+        "Test Prompt 5 for Group 3",
+    ],
+    g4: [
+        "Test Prompt 1 for Group 4",
+        "Test Prompt 2 for Group 4",
+        "Test Prompt 3 for Group 4",
+        "Test Prompt 4 for Group 4",
+        "Test Prompt 5 for Group 4",
+    ],
+    g5: [
+        "Test Prompt 1 for Group 5",
+        "Test Prompt 2 for Group 5",
+        "Test Prompt 3 for Group 5",
+        "Test Prompt 4 for Group 5",
+        "Test Prompt 5 for Group 5",
+    ],
+};
 
 let clickCount = 0;
 const loggedPrompts = [];
@@ -48,14 +46,18 @@ const hearButton = document.getElementById("hearButton"); // Reference to the "H
 
 // Event listener for group selection
 const groupSelection = document.getElementById("groupSelection");
+const groupContainers = document.querySelectorAll(".group-container");
+
 groupSelection.addEventListener("change", function () {
     const selectedGroup = groupSelection.value;
-    // Hide all groups
-    const allGroups = document.querySelectorAll(".container");
-    allGroups.forEach(group => group.style.display = "none");
-    // Show the selected group
-    const selectedGroupDiv = document.getElementById(`group-${selectedGroup}`);
-    selectedGroupDiv.style.display = "block";
+
+    // Hide all group containers
+    groupContainers.forEach(group => group.style.display = "none");
+
+    // Show the selected group container
+    const selectedGroupContainer = document.getElementById(`group-${selectedGroup}`);
+    selectedGroupContainer.style.display = "block";
+
     // Clear the click count and reset logged prompts
     clickCount = 0;
     loggedPrompts.length = 0;
@@ -67,29 +69,9 @@ groupSelection.addEventListener("change", function () {
 
 function generateRandomPrompt() {
     const selectedGroup = groupSelection.value;
-    let prompts;
+    const prompts = promptsByGroup[selectedGroup];
 
-    switch (selectedGroup) {
-        case "g1":
-            prompts = g1Prompts;
-            break;
-        case "g2":
-            prompts = g2Prompts;
-            break;
-        case "g3":
-            prompts = g3Prompts;
-            break;
-        case "g4":
-            prompts = g4Prompts;
-            break;
-        case "g5":
-            prompts = g5Prompts;
-            break;
-        default:
-            prompts = [];
-    }
-
-    if (prompts.length === 0) {
+    if (!prompts || prompts.length === 0) {
         promptDisplay.textContent = "No prompts remaining.";
     } else {
         clickCount++;
@@ -177,9 +159,5 @@ function speakPrompt(promptText) {
     }
 }
 
-/* styles.css */
-
-// The CSS code remains the same as your original code with the addition of the group selection styling.
-// You can refer to the previous CSS code provided.
-
-// Media query and other styles from your original code also remain unchanged.
+// Initialize with the default group
+groupSelection.dispatchEvent(new Event("change"));
