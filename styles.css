@@ -26,12 +26,17 @@ h1 {
 }
 
 .group-container {
-    display: none; /* Hide all group containers by default */
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    background-color: #f9f9f9;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
 }
 
-/* Style the "Generate Prompt" button */
+/* Style the "Generate Prompt" buttons within the group containers */
 .generate-button {
-    background-color: #aad5c5; /* Pastel teal color */
+    background-color: #aad5c5;
     color: #fff;
     border: none;
     padding: 10px 20px;
@@ -39,10 +44,12 @@ h1 {
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s ease;
+    display: block;
+    margin-top: 10px;
 }
 
 .generate-button:hover {
-    background-color: #89b8a5; /* Darker teal on hover */
+    background-color: #89b8a5;
 }
 
 #promptDisplay {
@@ -86,7 +93,7 @@ h1 {
 
 /* Style the "Hear This Prompt" button */
 #hearButton {
-    background-color: #aad5c5; /* Pastel teal color */
+    background-color: #aad5c5;
     color: #fff;
     border: none;
     padding: 10px 20px;
@@ -94,24 +101,29 @@ h1 {
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s ease;
+    display: block;
 }
 
 #hearButton:disabled {
-    background-color: #ccc; /* Grayed out when disabled */
+    background-color: #ccc;
     cursor: not-allowed;
+}
+
+#hearButton:hover {
+    background-color: #89b8a5;
 }
 
 /* Apply the same styles as other buttons */
 .save-button {
-    background-color: pastelpeach; /* Change to the desired pastel peach color */
-    color: white; /* Text color */
-    border: none; /* Remove borders */
-    padding: 10px 20px; /* Adjust padding as needed */
-    font-family: "Roboto Mono", monospace; /* Use Roboto Mono font */
-    cursor: pointer; /* Add a pointer cursor on hover */
-    margin-right: 10px; /* Add some spacing between buttons */
+    background-color: #ffd1b3;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-family: "Roboto Mono", monospace;
+    cursor: pointer;
+    margin-right: 10px;
 }
 
 .save-button:hover {
-    background-color: #ffaaaa; /* Change the hover color as desired */
+    background-color: #ffaaaa;
 }
