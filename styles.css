@@ -1,67 +1,55 @@
 body {
     font-family: "Roboto Mono", monospace;
     text-align: center;
-    background-color: #f3f3f3;
-    /* Background color for the body */
+    background-color: #f3f3f3; /* Background color for the body */
+    margin: 0;
+    padding: 0;
 }
 
 h1 {
     color: #333;
+    font-size: 24px; /* Increase font size for mobile */
+    margin: 20px 0;
 }
 
 .controls {
-    margin-top: 20px;
     display: flex;
-    justify-content: center;
+    flex-direction: column; /* Stack controls vertically on mobile */
     align-items: center;
+    margin: 20px 0;
 }
 
 .controls label {
     font-weight: bold;
-    margin-right: 10px;
-    color: #ffa500;
-    /* Orange color for labels */
+    margin-bottom: 10px; /* Add space between label and dropdown on mobile */
+    color: #ffa500; /* Orange color for labels */
 }
 
 button {
     padding: 10px 20px;
     font-size: 16px;
     margin: 5px;
-    background-color: #87ceeb;
-    /* Pastel teal background color for buttons */
+    background-color: #87ceeb; /* Pastel teal background color for buttons */
     border: none;
-    color: #fff;
-    /* White text color for buttons */
+    color: #fff; /* White text color for buttons */
     cursor: pointer;
+    width: 100%; /* Make buttons full-width on mobile */
 }
 
 button:hover {
-    background-color: #ffa500;
-    /* Orange background color on hover */
+    background-color: #ffa500; /* Orange background color on hover */
 }
 
 .prompt-display {
     margin-top: 20px;
+    font-size: 24px; /* Increased font size for the prompt display */
 }
 
 .log {
+    display: none; /* Hide the log section by default */
     margin-top: 20px;
     text-align: left;
-    background-color: #fff;
-    /* White background for the log section */
+    background-color: #fff; /* White background for the log section */
     padding: 10px;
     border-radius: 5px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-ul {
-    list-style-type: none;
-    padding: 0;
-}
-
-#exportMessage {
-    font-weight: bold;
-    margin-top: 10px;
-    color: #ffa500;
-    /* Orange color for export message */
-}
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 
