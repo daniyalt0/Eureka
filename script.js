@@ -170,16 +170,12 @@ generateButton.disabled = true; // Disable it by default
 const groupSelection = document.getElementById("groupSelection");
 groupSelection.addEventListener("change", function () {
     const selectedGroup = groupSelection.value;
-    const selectedList = listSelection.value; // Assuming you have a listSelection element
-
     // Hide all groups
     const allGroups = document.querySelectorAll(".group-container");
     allGroups.forEach(group => group.style.display = "none");
-    
     // Show the selected group
     const selectedGroupDiv = document.getElementById(`group-${selectedGroup}`);
     selectedGroupDiv.style.display = "block";
-
     // Clear the click count and reset logged prompts
     clickCount = 0;
     loggedPrompts.length = 0;
@@ -187,9 +183,8 @@ groupSelection.addEventListener("change", function () {
     promptDisplay.textContent = "";
     exportMessage.textContent = "";
     hearButton.disabled = true;
-
-    // Update the current prompts based on the selected group and list
-    switch (selectedGroup) {
+    // Update the current prompts based on the selected group
+      switch (selectedGroup) {
         case "g1":
             switch (selectedList) {
                 case "list1":
@@ -259,18 +254,9 @@ groupSelection.addEventListener("change", function () {
             // Handle the case where none of the groups match (if needed)
     }
 
-    // Toggle the visibility of the non-group "Generate Prompt" button
-    const nonGroupButton = document.querySelector(".non-group-button");
-    if (selectedGroup === "none") {
-        nonGroupButton.style.display = "block"; // Show the button
-    } else {
-        nonGroupButton.style.display = "none"; // Hide the button
-    }
+    // Enable the "Generate Prompt" button when a group is selected
+    generateButton.disabled = false;
 });
-
-// Enable the "Generate Prompt" button when a group is selected
-generateButton.disabled = false;
-
 
 let clickCount = 0;
 let loggedPrompts = [];
