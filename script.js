@@ -1,67 +1,58 @@
 // Define prompts for each group and prompt list
 const prompts = {
-    g1: {
-        list1: [
-            "Prompt 1 for Group 1 - List 1",
-            "Prompt 2 for Group 1 - List 1",
-            // Add more prompts for List 1
-        ],
-        list2: [
-            "Prompt 1 for Group 1 - List 2",
-            "Prompt 2 for Group 1 - List 2",
-            // Add more prompts for List 2
-        ],
-        list3: [
-            "Prompt 1 for Group 1 - List 3",
-            "Prompt 2 for Group 1 - List 3",
-            // Add more prompts for List 3
-        ],
-    },
-    g2: {
-        list1: [
-            "Prompt 1 for Group 2 - List 1",
-            "Prompt 2 for Group 2 - List 1",
-            // Add more prompts for List 1
-        ],
-        list2: [
-            "Prompt 1 for Group 2 - List 2",
-            "Prompt 2 for Group 2 - List 2",
-            // Add more prompts for List 2
-        ],
-        list3: [
-            "Prompt 1 for Group 2 - List 3",
-            "Prompt 2 for Group 2 - List 3",
-            // Add more prompts for List 3
-        ],
-    },
-    // Define prompts for other groups similarly
+    g1: [
+        "Prompt 1 for Group 1 - List 1",
+        "Prompt 2 for Group 1 - List 2",
+        "Prompt 3 for Group 1 - List 3"
+        // Add more prompts for Group 1
+    ],
+    g2: [
+        "Prompt 1 for Group 2 - List 1",
+        "Prompt 2 for Group 2 - List 2",
+        "Prompt 3 for Group 2 - List 3"
+        // Add more prompts for Group 2
+    ],
+    g3: [
+        "Prompt 1 for Group 3 - List 1",
+        "Prompt 2 for Group 3 - List 2",
+        "Prompt 3 for Group 3 - List 3"
+        // Add more prompts for Group 3
+    ],
+    g4: [
+        "Prompt 1 for Group 4 - List 1",
+        "Prompt 2 for Group 4 - List 2",
+        "Prompt 3 for Group 4 - List 3"
+        // Add more prompts for Group 4
+    ],
+    g5: [
+        "Prompt 1 for Group 5 - List 1",
+        "Prompt 2 for Group 5 - List 2",
+        "Prompt 3 for Group 5 - List 3"
+        // Add more prompts for Group 5
+    ]
 };
 
 // Initialize variables
 let clickCount = 0;
 const loggedPrompts = [];
-let currentPrompts = [];
+let currentGroup = "g1"; // Default to Group 1
+let currentListIndex = 0;
+
+const clickCountDisplay = document.getElementById("clickCountDisplay");
+const timestampList = document.getElementById("timestampList");
+const hearButton = document.getElementById("hearButton");
+const groupSelection = document.getElementById("groupSelection");
+const promptDisplay = document.getElementById("promptDisplay");
 
 // Event listener for group selection
-const groupSelection = document.getElementById("groupSelection");
 groupSelection.addEventListener("change", function () {
-    const selectedGroup = groupSelection.value;
-    const selectedList = groupSelection.options[groupSelection.selectedIndex].getAttribute("data-list");
-    const selectedPrompts = prompts[selectedGroup][selectedList];
-
-    if (!selectedPrompts || selectedPrompts.length === 0) {
-        alert("No prompts available for this group and list.");
-        return;
-    }
-
-    // Reset variables
+    currentGroup = groupSelection.value;
+    currentListIndex = 0;
     clickCount = 0;
+    clickCountDisplay.textContent = "Click count: 0";
+    promptDisplay.textContent = "";
     loggedPrompts.length = 0;
-    clickCountDisplay.textContent = "Click count: 0"; // Make sure this matches your HTML element ID
-    promptDisplay.textContent = ""; // Make sure this matches your HTML element ID
-    exportMessage.textContent = ""; // Make sure this matches your HTML element ID
-    hearButton.disabled = true; // Make sure this matches your HTML element ID
-    currentPrompts = selectedPrompts;
+    hearButton.disabled = true;
 });
 
 // Event listener for generating prompts
@@ -71,36 +62,31 @@ document.getElementById("generateButton").addEventListener("click", generateRand
 document.getElementById("saveButton").addEventListener("click", saveLoggedData);
 
 // Event listener for "Hear This Prompt" button
-const hearButton = document.getElementById("hearButton"); // Make sure this matches your HTML element ID
 hearButton.addEventListener("click", hearCurrentPrompt);
 
-// Initialize with the first group and list
+// Initialize with the first group
 groupSelection.value = "g1";
 groupSelection.dispatchEvent(new Event("change"));
 
 function generateRandomPrompt() {
-    if (currentPrompts.length === 0) {
-        promptDisplay.textContent = "No prompts remaining.";
+    if (!prompts[currentGroup] || currentListIndex >= prompts[currentGroup].length) {
+        promptDisplay.textContent = "No prompts remaining for this group.";
     } else {
         clickCount++;
-        const randomIndex = Math.floor(Math.random() * currentPrompts.length);
-        const randomPrompt = currentPrompts[randomIndex];
+        const randomPrompt = prompts[currentGroup][currentListIndex];
         const timestamp = new Date().toLocaleTimeString();
-
-        // Assuming timestampList is an <ul> element, you can modify this based on your HTML
-        const timestampList = document.getElementById("timestampList"); // Make sure this matches your HTML element ID
-
-        timestampList.innerHTML = "";
 
         promptDisplay.textContent = `Prompt #${clickCount}: ${randomPrompt}`;
         const timestampItem = document.createElement("li");
         timestampItem.textContent = `${clickCount}: ${randomPrompt} (Generated at ${timestamp})`;
-        timestampItem.style.fontFamily = "Roboto Mono, monospace";
         timestampList.appendChild(timestampItem);
 
         loggedPrompts.push({ prompt: randomPrompt, timestamp: timestamp });
-        currentPrompts.splice(randomIndex, 1);
+        currentListIndex++;
+
         clickCountDisplay.textContent = `Click count: ${clickCount}`;
+
+        // Enable the "Hear This Prompt" button after generating a prompt
         hearButton.disabled = false;
     }
 }
@@ -131,7 +117,7 @@ function exportData(data) {
 
     window.URL.revokeObjectURL(url);
 
-    const exportMessage = document.getElementById("exportMessage"); // Make sure this matches your HTML element ID
+    const exportMessage = document.getElementById("exportMessage");
     exportMessage.textContent = "Data exported successfully!";
     exportMessage.style.color = "#556f7b";
 }
