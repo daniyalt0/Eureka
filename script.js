@@ -1,36 +1,110 @@
 // Define prompts for each group and prompt list
+// Define prompts for each group and prompt list
 const prompts = {
-    g1: [
-        "Prompt 1 for Group 1 - List 1",
-        "Prompt 2 for Group 1 - List 2",
-        "Prompt 3 for Group 1 - List 3"
-        // Add more prompts for Group 1
-    ],
-    g2: [
-        "Prompt 1 for Group 2 - List 1",
-        "Prompt 2 for Group 2 - List 2",
-        "Prompt 3 for Group 2 - List 3"
-        // Add more prompts for Group 2
-    ],
-    g3: [
-        "Prompt 1 for Group 3 - List 1",
-        "Prompt 2 for Group 3 - List 2",
-        "Prompt 3 for Group 3 - List 3"
-        // Add more prompts for Group 3
-    ],
-    g4: [
-        "Prompt 1 for Group 4 - List 1",
-        "Prompt 2 for Group 4 - List 2",
-        "Prompt 3 for Group 4 - List 3"
-        // Add more prompts for Group 4
-    ],
-    g5: [
-        "Prompt 1 for Group 5 - List 1",
-        "Prompt 2 for Group 5 - List 2",
-        "Prompt 3 for Group 5 - List 3"
-        // Add more prompts for Group 5
-    ]
+    g1: {
+        list1: [
+            "Prompt 1 for Group 1 - List 1",
+            "Prompt 2 for Group 1 - List 1",
+            "Prompt 3 for Group 1 - List 1"
+            // Add more prompts for Group 1 List 1
+        ],
+        list2: [
+            "Prompt 1 for Group 1 - List 2",
+            "Prompt 2 for Group 1 - List 2",
+            "Prompt 3 for Group 1 - List 2"
+            // Add more prompts for Group 1 List 2
+        ],
+        list3: [
+            "Prompt 1 for Group 1 - List 3",
+            "Prompt 2 for Group 1 - List 3",
+            "Prompt 3 for Group 1 - List 3"
+            // Add more prompts for Group 1 List 3
+        ],
+    },
+    g2: {
+        list1: [
+            "Prompt 1 for Group 2 - List 1",
+            "Prompt 2 for Group 2 - List 1",
+            "Prompt 3 for Group 2 - List 1"
+            // Add more prompts for Group 2 List 1
+        ],
+        list2: [
+            "Prompt 1 for Group 2 - List 2",
+            "Prompt 2 for Group 2 - List 2",
+            "Prompt 3 for Group 2 - List 2"
+            // Add more prompts for Group 2 List 2
+        ],
+        list3: [
+            "Prompt 1 for Group 2 - List 3",
+            "Prompt 2 for Group 2 - List 3",
+            "Prompt 3 for Group 2 - List 3"
+            // Add more prompts for Group 2 List 3
+        ],
+    },
+    g3: {
+        list1: [
+            "Prompt 1 for Group 3 - List 1",
+            "Prompt 2 for Group 3 - List 1",
+            "Prompt 3 for Group 3 - List 1"
+            // Add more prompts for Group 3 List 1
+        ],
+        list2: [
+            "Prompt 1 for Group 3 - List 2",
+            "Prompt 2 for Group 3 - List 2",
+            "Prompt 3 for Group 3 - List 2"
+            // Add more prompts for Group 3 List 2
+        ],
+        list3: [
+            "Prompt 1 for Group 3 - List 3",
+            "Prompt 2 for Group 3 - List 3",
+            "Prompt 3 for Group 3 - List 3"
+            // Add more prompts for Group 3 List 3
+        ],
+    },
+    g4: {
+        list1: [
+            "Prompt 1 for Group 4 - List 1",
+            "Prompt 2 for Group 4 - List 1",
+            "Prompt 3 for Group 4 - List 1"
+            // Add more prompts for Group 4 List 1
+        ],
+        list2: [
+            "Prompt 1 for Group 4 - List 2",
+            "Prompt 2 for Group 4 - List 2",
+            "Prompt 3 for Group 4 - List 2"
+            // Add more prompts for Group 4 List 2
+        ],
+        list3: [
+            "Prompt 1 for Group 4 - List 3",
+            "Prompt 2 for Group 4 - List 3",
+            "Prompt 3 for Group 4 - List 3"
+            // Add more prompts for Group 4 List 3
+        ],
+    },
+    g5: {
+        list1: [
+            "Prompt 1 for Group 5 - List 1",
+            "Prompt 2 for Group 5 - List 1",
+            "Prompt 3 for Group 5 - List 1"
+            // Add more prompts for Group 5 List 1
+        ],
+        list2: [
+            "Prompt 1 for Group 5 - List 2",
+            "Prompt 2 for Group 5 - List 2",
+            "Prompt 3 for Group 5 - List 2"
+            // Add more prompts for Group 5 List 2
+        ],
+        list3: [
+            "Prompt 1 for Group 5 - List 3",
+            "Prompt 2 for Group 5 - List 3",
+            "Prompt 3 for Group 5 - List 3"
+            // Add more prompts for Group 5 List 3
+        ],
+    },
 };
+
+// Rest of the code remains the same...
+
 
 // Initialize variables
 let clickCount = 0;
@@ -82,7 +156,7 @@ groupSelection.value = "g1";
 groupSelection.dispatchEvent(new Event("change"));
 
 function generateRandomPrompt() {
-    if (!prompts[currentGroup][currentList]) {
+    if (!prompts[currentGroup] || !prompts[currentGroup][currentList]) {
         promptDisplay.textContent = "No prompts remaining for this group and list.";
     } else {
         clickCount++;
