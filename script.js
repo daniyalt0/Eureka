@@ -1,5 +1,4 @@
 // Define prompts for each group and prompt list
-// Define prompts for each group and prompt list
 const prompts = {
     g1: {
         list1: [
@@ -105,7 +104,6 @@ const prompts = {
 
 // Rest of the code remains the same...
 
-
 // Initialize variables
 let clickCount = 0;
 const loggedPrompts = [];
@@ -131,19 +129,19 @@ groupSelection.addEventListener("change", function () {
 
 // Event listeners for generating prompts for each list
 document.getElementById("generateList1Button").addEventListener("click", function () {
-    currentList = "list1";
-    generateRandomPrompt();
+    generateRandomPrompt("list1");
 });
 
 document.getElementById("generateList2Button").addEventListener("click", function () {
-    currentList = "list2";
-    generateRandomPrompt();
+    generateRandomPrompt("list2");
 });
 
 document.getElementById("generateList3Button").addEventListener("click", function () {
-    currentList = "list3";
-    generateRandomPrompt();
+    generateRandomPrompt("list3");
 });
+
+// Rest of the code remains the same...
+
 
 // Event listener for saving logged data
 document.getElementById("saveButton").addEventListener("click", saveLoggedData);
