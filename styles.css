@@ -1,132 +1,57 @@
-/* Reset some default styles */
-body, h1, ul {
-    margin: 0;
-    padding: 0;
-}
-
 body {
     font-family: "Roboto Mono", monospace;
-    background-color: #f0f0f0;
-    color: #333;
-}
-
-.container {
-    max-width: 600px;
-    margin: 0 auto;
-    padding: 20px;
-    background-color: #fff;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-    border-radius: 5px;
+    text-align: center;
+    background-color: #f3f3f3; /* Background color for the body */
 }
 
 h1 {
-    text-align: center;
-    font-size: 24px;
-    margin-bottom: 20px;
+    color: #333;
 }
 
-.group-container {
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    margin-bottom: 20px;
-    background-color: #f9f9f9;
-    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+.controls {
+    margin-top: 20px;
 }
 
-.generate-button {
-    background-color: #aad5c5;
-    color: #fff;
-    border: none;
+.controls label {
+    font-weight: bold;
+    margin-right: 10px;
+    color: #ffa500; /* Orange color for labels */
+}
+
+button {
     padding: 10px 20px;
+    font-size: 16px;
     margin: 5px;
-    border-radius: 5px;
+    background-color: #87ceeb; /* Pastel teal background color for buttons */
+    border: none;
+    color: #fff; /* White text color for buttons */
     cursor: pointer;
-    transition: background-color 0.3s ease;
-    display: block;
-    margin-top: 10px;
 }
 
-.generate-button:hover {
-    background-color: #89b8a5;
+button:hover {
+    background-color: #ffa500; /* Orange background color on hover */
 }
 
-/* Style the "Generate Prompt" buttons within the group containers */
-
-#promptDisplay {
-    font-size: 18px;
-    text-align: center;
-    margin: 20px 0;
+.prompt-display {
+    margin-top: 20px;
 }
 
-#clickCountDisplay {
-    font-size: 16px;
-    text-align: center;
-    margin: 10px 0;
+.log {
+    margin-top: 20px;
+    text-align: left;
+    background-color: #fff; /* White background for the log section */
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-#exportMessage {
-    font-size: 16px;
-    text-align: center;
-    margin: 10px 0;
-}
-
-/* Style the timestamp list */
-#timestampGrid ul {
+ul {
     list-style-type: none;
     padding: 0;
 }
 
-#timestampGrid li {
-    font-family: "Roboto Mono", monospace;
-    font-size: 14px;
-    margin-bottom: 5px;
+#exportMessage {
+    font-weight: bold;
+    margin-top: 10px;
+    color: #ffa500; /* Orange color for export message */
 }
-
-/* Style the group selection dropdown */
-#groupSelection {
-    font-family: "Roboto Mono", monospace;
-    font-size: 16px;
-    padding: 5px;
-    margin-bottom: 20px;
-    width: 100%;
-}
-
-/* Style the "Hear This Prompt" button */
-#hearButton {
-    background-color: #aad5c5;
-    color: #fff;
-    border: none;
-    padding: 10px 20px;
-    margin: 10px 0;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    display: block;
-}
-
-#hearButton:disabled {
-    background-color: #ccc;
-    cursor: not-allowed;
-}
-
-#hearButton:hover {
-    background-color: #89b8a5;
-}
-
-/* Apply the same styles as other buttons */
-.save-button {
-    background-color: #ffd1b3;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    font-family: "Roboto Mono", monospace;
-    cursor: pointer;
-    margin-right: 10px;
-}
-
-.save-button:hover {
-    background-color: #ffaaaa;
-}
-
-/* Add styles for other elements as needed */
