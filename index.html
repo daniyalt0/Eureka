@@ -3,40 +3,49 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Prompt Randomizer</title>
+    <title>Prompt Generator</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="container">
-        <h1>Random Prompt Generator</h1>
-
-        <!-- Add a group selection dropdown with Group 1 as the default -->     
+    <h1>Prompt Generator</h1>
+    <div class="controls">
+        <label for="groupSelection">Select Group:</label>
         <select id="groupSelection">
-            <option value="g1" selected>Group 1</option>
-            <option value="g2">Group 2</option>
-            <option value="g3">Group 3</option>
-            <option value="g4">Group 4</option>
-            <option value="g5">Group 5</option>
+            
+            <option value="g1" data-list="list1">Group 1 - List 1</option>
+            <option value="g1" data-list="list2">Group 1 - List 2</option>
+            <option value="g1" data-list="list3">Group 1 - List 3</option>
+            
+            <option value="g2" data-list="list1">Group 2 - List 1</option>
+            <option value="g2" data-list="list2">Group 2 - List 2</option>
+            <option value="g2" data-list="list3">Group 2 - List 3</option>
+
+            <option value="g3" data-list="list1">Group 3 - List 1</option>
+            <option value="g3" data-list="list2">Group 3 - List 2</option>
+            <option value="g3" data-list="list3">Group 3 - List 3</option>
+
+            <option value="g4" data-list="list1">Group 4 - List 1</option>
+            <option value="g4" data-list="list2">Group 4 - List 2</option>
+            <option value="g4" data-list="list3">Group 4 - List 3</option>
+
+            <option value="g5" data-list="list1">Group 5 - List 1</option>
+            <option value="g5" data-list="list2">Group 5 - List 2</option>
+            <option value="g5" data-list="list3">Group 5 - List 3</option>
+            
+            <!-- Add options for other groups and lists -->
         </select>
-
-        <!-- Create a single div for prompt generation -->
-        <div class="group-container" id="promptContainer">
-            <!-- Prompt Generation Button -->
-            <button class="generate-button" id="generateButton">Generate Prompt</button>
-
-            <!-- Generated Prompt -->
-            <p id="promptDisplay"></p>
-
-            <!-- Click Count Display -->
-            <p id="clickCountDisplay">Click count: 0</p>
-
-            <!-- Exported Data Message -->
-            <p id="exportMessage" style="color: green;"></p>
-        </div>
-
-        <!-- Include the speech synthesis script -->
-        <script src="speechSynthesis.js"></script>
-        <script src="script.js"></script>
+        <button id="generateButton">Generate Prompt</button>
+        <button id="saveButton">Save Logged Data</button>
+        <button id="hearButton" disabled>Hear This Prompt</button>
     </div>
+    <div class="prompt-display">
+        <p id="promptDisplay"></p>
+    </div>
+    <div class="log">
+        <h2>Logged Prompts</h2>
+        <ul id="timestampList"></ul>
+        <p id="exportMessage"></p>
+    </div>
+    <script src="script.js"></script>
 </body>
 </html>
