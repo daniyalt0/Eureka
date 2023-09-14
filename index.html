@@ -57,17 +57,6 @@
             <button class="generate-button" id="generateButton-g5-3">Generate Prompt 3</button>
         </div>
 
-        <!-- Include the button with the ID "generateButton" for non-group prompts -->
-        <button id="generateButton">Generate Prompt</button>
-
-        <button id="saveButton">Save Data</button>
-
-        <button id="hearButton">Hear This Prompt</button>
-
-        <ul id="timestampList">
-        <!-- This list will display timestamps -->
-        </ul>
-
         <!-- Generated Prompt -->
         <p id="promptDisplay"></p>
 
@@ -77,9 +66,9 @@
         <!-- Exported Data Message -->
         <p id="exportMessage" style="color: green;"></p>
 
+        <!-- Include the speech synthesis script -->
+        <script src="speechSynthesis.js"></script>
+        <script src="script.js"></script>
     </div>
-    <!-- Include the speech synthesis script -->
-    <script src="speechSynthesis.js"></script>
-    <script src="script.js"></script>
 </body>
 </html>
