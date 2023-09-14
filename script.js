@@ -88,45 +88,117 @@ const prompts = {
     // Define prompts for other groups similarly
 };
 
-// Initialize the "Generate Prompt" button as disabled by default
-const generateButton = document.getElementById("generateButton");
-generateButton.disabled = true; // Disable it by default
+
+
+// Initialize variables
+let clickCount = 0;
+const loggedPrompts = [];
+let currentPrompts = [];
+
+const clickCountDisplay = document.getElementById("clickCountDisplay");
+const timestampList = document.getElementById("timestampList");
+const hearButton = document.getElementById("hearButton");
 
 // Event listener for group selection
 const groupSelection = document.getElementById("groupSelection");
 groupSelection.addEventListener("change", function () {
     const selectedGroup = groupSelection.value;
-    const selectedList = "list1"; // You can change this to the desired list initially
+    const selectedList = groupSelection.options[groupSelection.selectedIndex].getAttribute("data-list");
+    const selectedPrompts = prompts[selectedGroup][selectedList];
 
-    // Update the current prompts based on the selected group and list
-    const currentPrompts = prompts[selectedGroup][selectedList];
+    if (!selectedPrompts || selectedPrompts.length === 0) {
+        alert("No prompts available for this group and list.");
+        return;
+    }
 
-    // Enable the "Generate Prompt" button when a group is selected
-    generateButton.disabled = false;
+    // Reset variables
+    clickCount = 0;
+    loggedPrompts.length = 0;
+    clickCountDisplay.textContent = "Click count: 0";
+    promptDisplay.textContent = "";
+    exportMessage.textContent = "";
+    hearButton.disabled = true;
+    currentPrompts = selectedPrompts;
 });
 
-let clickCount = 0;
-const clickCountDisplay = document.getElementById("clickCountDisplay");
-const promptDisplay = document.getElementById("promptDisplay");
-const exportMessage = document.getElementById("exportMessage");
+// Event listener for generating prompts
+document.getElementById("generateButton").addEventListener("click", generateRandomPrompt);
 
-generateButton.addEventListener("click", function () {
-    const selectedGroup = groupSelection.value;
-    const selectedList = "list1"; // You can change this to the desired list initially
-    const currentPrompts = prompts[selectedGroup][selectedList];
+// Event listener for saving logged data
+document.getElementById("saveButton").addEventListener("click", saveLoggedData);
 
-    generateRandomPrompt(currentPrompts);
-});
+// Event listener for "Hear This Prompt" button
+hearButton.addEventListener("click", hearCurrentPrompt);
 
-function generateRandomPrompt(prompts) {
-    if (prompts.length === 0) {
+// Initialize with the first group and list
+groupSelection.value = "g1";
+groupSelection.dispatchEvent(new Event("change"));
+
+function generateRandomPrompt() {
+    if (currentPrompts.length === 0) {
         promptDisplay.textContent = "No prompts remaining.";
     } else {
         clickCount++;
-        const randomIndex = Math.floor(Math.random() * prompts.length);
-        const randomPrompt = prompts[randomIndex];
+        const randomIndex = Math.floor(Math.random() * currentPrompts.length);
+        const randomPrompt = currentPrompts[randomIndex];
+        const timestamp = new Date().toLocaleTimeString();
+
+        timestampList.innerHTML = "";
 
         promptDisplay.textContent = `Prompt #${clickCount}: ${randomPrompt}`;
+        const timestampItem = document.createElement("li");
+        timestampItem.textContent = `${clickCount}: ${randomPrompt} (Generated at ${timestamp})`;
+        timestampItem.style.fontFamily = "Roboto Mono, monospace";
+        timestampList.appendChild(timestampItem);
+
+        loggedPrompts.push({ prompt: randomPrompt, timestamp: timestamp });
+        currentPrompts.splice(randomIndex, 1);
         clickCountDisplay.textContent = `Click count: ${clickCount}`;
+
+        // Enable the "Hear This Prompt" button after generating a prompt
+        hearButton.disabled = false;
     }
-});
+}
+
+function saveLoggedData() {
+    if (loggedPrompts.length > 0) {
+        let csvData = "Prompt Name,Time Stamp\n";
+        for (const loggedPrompt of loggedPrompts) {
+            csvData += `"${loggedPrompt.prompt}","${loggedPrompt.timestamp}"\n`;
+        }
+        csvData += `Total Count,${clickCount}\n`;
+
+        exportData(csvData);
+    }
+}
+
+function exportData(data) {
+    const blob = new Blob([data], { type: 'text/csv' });
+    const url = window.URL.createObjectURL(blob);
+
+    const a = document.createElement('a');
+    a.style.display = 'none';
+    a.href = url;
+    a.download = 'generated_data.csv';
+
+    document.body.appendChild(a);
+    a.click();
+
+    window.URL.revokeObjectURL(url);
+
+    const exportMessage = document.getElementById("exportMessage");
+    exportMessage.textContent = "Data exported successfully!";
+    exportMessage.style.color = "#556f7b";
+}
+
+function hearCurrentPrompt() {
+    const currentPromptText = promptDisplay.textContent.replace(/^Prompt \d+: /, ''); // Remove "Prompt #X: "
+    speakPrompt(currentPromptText);
+}
+
+function isSpeechSynthesisSupported() {
+    return 'speechSynthesis' in window;
+}
+
+function speakPrompt(promptText) {
+    if
