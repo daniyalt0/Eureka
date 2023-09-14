@@ -34,70 +34,13 @@ const prompts = {
             // Add more prompts for List 3
         ],
     },
-    g3: {
-        list1: [
-            "Prompt 1 for Group 3 - List 1",
-            "Prompt 2 for Group 3- List 1",
-            // Add more prompts for List 1
-        ],
-        list2: [
-            "Prompt 1 for Group 3 - List 2",
-            "Prompt 2 for Group 3 - List 2",
-            // Add more prompts for List 2
-        ],
-        list3: [
-            "Prompt 1 for Group 3 - List 3",
-            "Prompt 2 for Group 3 - List 3",
-            // Add more prompts for List 3
-        ],
-    }, 
-    g4: {
-        list1: [
-            "Prompt 1 for Group 4 - List 1",
-            "Prompt 2 for Group 4- List 1",
-            // Add more prompts for List 1
-        ],
-        list2: [
-            "Prompt 1 for Group 4 - List 2",
-            "Prompt 2 for Group 4 - List 2",
-            // Add more prompts for List 2
-        ],
-        list3: [
-            "Prompt 1 for Group 4 - List 3",
-            "Prompt 2 for Group 4 - List 3",
-            // Add more prompts for List 3
-        ],
-    }, 
-    g5: {
-        list1: [
-            "Prompt 1 for Group 5 - List 1",
-            "Prompt 2 for Group 5- List 1",
-            // Add more prompts for List 1
-        ],
-        list2: [
-            "Prompt 1 for Group 5 - List 2",
-            "Prompt 2 for Group 5 - List 2",
-            // Add more prompts for List 2
-        ],
-        list3: [
-            "Prompt 1 for Group 5 - List 3",
-            "Prompt 2 for Group 5 - List 3",
-            // Add more prompts for List 3
-        ],
-    }, 
     // Define prompts for other groups similarly
 };
-
-
 
 // Initialize variables
 let clickCount = 0;
 const loggedPrompts = [];
 let currentPrompts = [];
-
-const clickCountDisplay = document.getElementById("clickCountDisplay");
-const timestampList = document.getElementById("timestampList");
-const hearButton = document.getElementById("hearButton");
 
 // Event listener for group selection
 const groupSelection = document.getElementById("groupSelection");
@@ -114,10 +57,10 @@ groupSelection.addEventListener("change", function () {
     // Reset variables
     clickCount = 0;
     loggedPrompts.length = 0;
-    clickCountDisplay.textContent = "Click count: 0";
-    promptDisplay.textContent = "";
-    exportMessage.textContent = "";
-    hearButton.disabled = true;
+    clickCountDisplay.textContent = "Click count: 0"; // Make sure this matches your HTML element ID
+    promptDisplay.textContent = ""; // Make sure this matches your HTML element ID
+    exportMessage.textContent = ""; // Make sure this matches your HTML element ID
+    hearButton.disabled = true; // Make sure this matches your HTML element ID
     currentPrompts = selectedPrompts;
 });
 
@@ -128,6 +71,7 @@ document.getElementById("generateButton").addEventListener("click", generateRand
 document.getElementById("saveButton").addEventListener("click", saveLoggedData);
 
 // Event listener for "Hear This Prompt" button
+const hearButton = document.getElementById("hearButton"); // Make sure this matches your HTML element ID
 hearButton.addEventListener("click", hearCurrentPrompt);
 
 // Initialize with the first group and list
@@ -143,6 +87,9 @@ function generateRandomPrompt() {
         const randomPrompt = currentPrompts[randomIndex];
         const timestamp = new Date().toLocaleTimeString();
 
+        // Assuming timestampList is an <ul> element, you can modify this based on your HTML
+        const timestampList = document.getElementById("timestampList"); // Make sure this matches your HTML element ID
+
         timestampList.innerHTML = "";
 
         promptDisplay.textContent = `Prompt #${clickCount}: ${randomPrompt}`;
@@ -154,8 +101,6 @@ function generateRandomPrompt() {
         loggedPrompts.push({ prompt: randomPrompt, timestamp: timestamp });
         currentPrompts.splice(randomIndex, 1);
         clickCountDisplay.textContent = `Click count: ${clickCount}`;
-
-        // Enable the "Hear This Prompt" button after generating a prompt
         hearButton.disabled = false;
     }
 }
@@ -186,7 +131,7 @@ function exportData(data) {
 
     window.URL.revokeObjectURL(url);
 
-    const exportMessage = document.getElementById("exportMessage");
+    const exportMessage = document.getElementById("exportMessage"); // Make sure this matches your HTML element ID
     exportMessage.textContent = "Data exported successfully!";
     exportMessage.style.color = "#556f7b";
 }
