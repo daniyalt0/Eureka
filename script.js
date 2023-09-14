@@ -143,22 +143,12 @@ document.getElementById("generateList3Button").addEventListener("click", functio
 // Rest of the code remains the same...
 
 
-// Event listener for saving logged data
-document.getElementById("saveButton").addEventListener("click", saveLoggedData);
-
-// Event listener for "Hear This Prompt" button
-hearButton.addEventListener("click", hearCurrentPrompt);
-
-// Initialize with the first group
-groupSelection.value = "g1";
-groupSelection.dispatchEvent(new Event("change"));
-
-function generateRandomPrompt() {
-    if (!prompts[currentGroup] || !prompts[currentGroup][currentList]) {
+function generateRandomPrompt(list) {
+    if (!prompts[currentGroup] || !prompts[currentGroup][list]) {
         promptDisplay.textContent = "No prompts remaining for this group and list.";
     } else {
         clickCount++;
-        const listPrompts = prompts[currentGroup][currentList];
+        const listPrompts = prompts[currentGroup][list]; // Use the provided list parameter
         if (listPrompts.length === 0) {
             promptDisplay.textContent = "No prompts remaining for this group and list.";
             return;
@@ -179,6 +169,20 @@ function generateRandomPrompt() {
         hearButton.disabled = false;
     }
 }
+
+
+
+//_________________________________________________________________________________________--
+// Event listener for saving logged data
+document.getElementById("saveButton").addEventListener("click", saveLoggedData);
+
+// Event listener for "Hear This Prompt" button
+hearButton.addEventListener("click", hearCurrentPrompt);
+
+// Initialize with the first group
+groupSelection.value = "g1";
+groupSelection.dispatchEvent(new Event("change"));
+
 
 function saveLoggedData() {
     if (loggedPrompts.length > 0) {
