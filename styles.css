@@ -34,7 +34,6 @@ h1 {
     box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
 }
 
-/* Style the "Generate Prompt" buttons within the group containers */
 .generate-button {
     background-color: #aad5c5;
     color: #fff;
@@ -51,6 +50,8 @@ h1 {
 .generate-button:hover {
     background-color: #89b8a5;
 }
+
+/* Style the "Generate Prompt" buttons within the group containers */
 
 #promptDisplay {
     font-size: 18px;
@@ -127,3 +128,5 @@ h1 {
 .save-button:hover {
     background-color: #ffaaaa;
 }
+
+/* Add styles for other elements as needed */
