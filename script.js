@@ -36,7 +36,7 @@ const prompts = {
 let clickCount = 0;
 const loggedPrompts = [];
 let currentGroup = "g1"; // Default to Group 1
-let currentListIndex = 0;
+let currentList = "list1"; // Default to List 1
 
 const clickCountDisplay = document.getElementById("clickCountDisplay");
 const timestampList = document.getElementById("timestampList");
@@ -47,7 +47,7 @@ const promptDisplay = document.getElementById("promptDisplay");
 // Event listener for group selection
 groupSelection.addEventListener("change", function () {
     currentGroup = groupSelection.value;
-    currentListIndex = 0;
+    currentList = "list1"; // Reset to List 1
     clickCount = 0;
     clickCountDisplay.textContent = "Click count: 0";
     promptDisplay.textContent = "";
@@ -55,8 +55,21 @@ groupSelection.addEventListener("change", function () {
     hearButton.disabled = true;
 });
 
-// Event listener for generating prompts
-document.getElementById("generateButton").addEventListener("click", generateRandomPrompt);
+// Event listeners for generating prompts for each list
+document.getElementById("generateList1Button").addEventListener("click", function () {
+    currentList = "list1";
+    generateRandomPrompt();
+});
+
+document.getElementById("generateList2Button").addEventListener("click", function () {
+    currentList = "list2";
+    generateRandomPrompt();
+});
+
+document.getElementById("generateList3Button").addEventListener("click", function () {
+    currentList = "list3";
+    generateRandomPrompt();
+});
 
 // Event listener for saving logged data
 document.getElementById("saveButton").addEventListener("click", saveLoggedData);
@@ -69,11 +82,17 @@ groupSelection.value = "g1";
 groupSelection.dispatchEvent(new Event("change"));
 
 function generateRandomPrompt() {
-    if (!prompts[currentGroup] || currentListIndex >= prompts[currentGroup].length) {
-        promptDisplay.textContent = "No prompts remaining for this group.";
+    if (!prompts[currentGroup][currentList]) {
+        promptDisplay.textContent = "No prompts remaining for this group and list.";
     } else {
         clickCount++;
-        const randomPrompt = prompts[currentGroup][currentListIndex];
+        const listPrompts = prompts[currentGroup][currentList];
+        if (listPrompts.length === 0) {
+            promptDisplay.textContent = "No prompts remaining for this group and list.";
+            return;
+        }
+        const randomIndex = Math.floor(Math.random() * listPrompts.length);
+        const randomPrompt = listPrompts.splice(randomIndex, 1)[0];
         const timestamp = new Date().toLocaleTimeString();
 
         promptDisplay.textContent = `Prompt #${clickCount}: ${randomPrompt}`;
@@ -82,8 +101,6 @@ function generateRandomPrompt() {
         timestampList.appendChild(timestampItem);
 
         loggedPrompts.push({ prompt: randomPrompt, timestamp: timestamp });
-        currentListIndex++;
-
         clickCountDisplay.textContent = `Click count: ${clickCount}`;
 
         // Enable the "Hear This Prompt" button after generating a prompt
