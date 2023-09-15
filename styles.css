@@ -89,5 +89,7 @@ button:hover {
     button,
     select {
         width: 100%;
+        padding: 10px 20px; /* Adjust padding for smaller screens */
+        font-size: 14px; /* Reduce font size for buttons */
     }
 }
