@@ -25,7 +25,7 @@ const prompts = {
             "Principles of Minimalism",
             "Fractals",
             "Scale",
-            "Size
+            "Size"
             // Add more prompts for Group 1 List 2
         ],
         list3: [
