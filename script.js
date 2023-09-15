@@ -87,11 +87,10 @@ const prompts = {
    
 };
 
-// Rest of the code remains the same...
 
-// Initialize variables
+/ Initialize variables
 let clickCount = 0;
-const loggedPrompts = [];
+const totalCounts = { list1: 0, list2: 0, list3: 0 }; // Total counts for each stage
 let currentGroup = "g1"; // Default to Group 1
 let currentList = "list1"; // Default to List 1
 
@@ -106,7 +105,7 @@ groupSelection.addEventListener("change", function () {
     currentGroup = groupSelection.value;
     currentList = "list1"; // Reset to List 1
     clickCount = 0;
-    clickCountDisplay.textContent = "Click count: 0";
+    clickCountDisplay.textContent = `Total Count: ${totalCounts[currentList]}`;
     promptDisplay.textContent = "";
     loggedPrompts.length = 0;
     hearButton.disabled = true;
@@ -125,9 +124,7 @@ document.getElementById("generateList3Button").addEventListener("click", functio
     generateRandomPrompt("list3");
 });
 
-
 // Rest of the code remains the same...
-
 
 function generateRandomPrompt(list) {
     if (!prompts[currentGroup] || !prompts[currentGroup][list]) {
