@@ -88,7 +88,7 @@ const prompts = {
 };
 
 
-/ Initialize variables
+// Initialize variables
 let clickCount = 0;
 const totalCounts = { list1: 0, list2: 0, list3: 0 }; // Total counts for each stage
 let currentGroup = "g1"; // Default to Group 1
