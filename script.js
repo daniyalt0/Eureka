@@ -116,6 +116,11 @@ groupSelection.addEventListener("change", function () {
 
     // Update total count in the HTML
     document.getElementById("totalCountDisplay").textContent = `Total Count: ${clickCount}`;
+
+    // Update stage count displays in the HTML
+    document.getElementById("stage1Count").textContent = `Stage 1 Count: ${stageCounts.list1}`;
+    document.getElementById("stage2Count").textContent = `Stage 2 Count: ${stageCounts.list2}`;
+    document.getElementById("stage3Count").textContent = `Stage 3 Count: ${stageCounts.list3}`;
 });
 
 // Event listeners for generating prompts for each list
