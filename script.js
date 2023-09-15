@@ -93,6 +93,8 @@ let clickCount = 0;
 const totalCounts = { list1: 0, list2: 0, list3: 0 }; // Total counts for each stage
 let currentGroup = "g1"; // Default to Group 1
 let currentList = "list1"; // Default to List 1
+const loggedPrompts = []; // Initialize an empty array for logged prompts
+
 
 const clickCountDisplay = document.getElementById("clickCountDisplay");
 const timestampList = document.getElementById("timestampList");
