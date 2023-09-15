@@ -2,41 +2,85 @@
 const prompts = {
     g1: {
         list1: [
-            "Prompt 1 for Group 1 - List 1",
-            "Prompt 2 for Group 1 - List 1",
-            "Prompt 3 for Group 1 - List 1"
+            "Modular",
+            "Tessellation and trusses",
+            "Tensions and Compressions",
+            "Density",
+            "Geometry",
+            "Angles",
+            "Placement",
+            "Triangulation",
+            "Weaving/Braiding",
+            "Cantilever Design",
+            
             // Add more prompts for Group 1 List 1
         ],
         list2: [
-            "Prompt 1 for Group 1 - List 2",
-            "Prompt 2 for Group 1 - List 2",
-            "Prompt 3 for Group 1 - List 2"
+            "Balancing Forces",
+            "Toothpick spacing",
+            "Arches",
+            "Lattice Structures",
+            "Load Bearing Prompts",
+            "Beyond Traditional shapes",
+            "Principles of Minimalism",
+            "Fractals",
+            "Scale",
+            "Size
             // Add more prompts for Group 1 List 2
         ],
         list3: [
-            "Prompt 1 for Group 1 - List 3",
-            "Prompt 2 for Group 1 - List 3",
-            "Prompt 3 for Group 1 - List 3"
+             "Domes and Spheres",
+            "Helix/DNA",
+            "Gaps and voids",
+            "Unconventional alignments / toothpick orientation",
+            "Varying Modules",
+            "Think like a master weaver",
+            "Volumetric trusses",
+            "Principles of origami",
+            "Notion of thickening diameter",
+            "Investigate density gradient"
             // Add more prompts for Group 1 List 3
         ],
     },
     g2: {
         list1: [
-            "Prompt 1 for Group 2 - List 1",
-            "Prompt 2 for Group 2 - List 1",
-            "Prompt 3 for Group 2 - List 1"
+            "Think Repetition and Rhythm",
+            "Repeat Patterns/ Think like Escher",
+            "Apply laws of physics",
+            "Is your iteration spaced out or condensed",
+            "Rotate, Skew, Warp",
+            "Move, Remove, Displace",
+            "Think strength geometry",
+            "Joinery mechanism",
+            "Go beyond support, Float or hang",
+            "folds and interlinks"
+
             // Add more prompts for Group 2 List 1
         ],
         list2: [
-            "Prompt 1 for Group 2 - List 2",
-            "Prompt 2 for Group 2 - List 2",
-            "Prompt 3 for Group 2 - List 2"
+            "Disbalancing, asymmetry and symmetrical",
+            "Distance and Division",
+            "Think supporting in curves",
+            "Lightness and Weight",
+            "Non-shape geometry",
+            "More with less",
+            "Does size matter",
+            "Non-shape organic",
+            "Flip and Mirror",
+            "Angles and orientation"
             // Add more prompts for Group 2 List 2
         ],
         list3: [
-            "Prompt 1 for Group 2 - List 3",
-            "Prompt 2 for Group 2 - List 3",
-            "Prompt 3 for Group 2 - List 3"
+            "Eggs",
+            "Hats and helmets",
+            "Negative Space",
+            "Hummingbird’s nest",
+            "Strength through sum of parts",
+            "Prisms/Pyramid",
+            "Paper crane",
+            "Stacking and fattening",
+            "Distributing weight",
+            "Left Right Up Down"
             // Add more prompts for Group 2 List 3
         ],
     },
