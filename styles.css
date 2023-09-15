@@ -85,3 +85,9 @@ button:hover {
         margin: 10px 0;
     }
 }
+
+/* CSS to hide stage counts */
+.stage-counts {
+    display: none;
+}
+
