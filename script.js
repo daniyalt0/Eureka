@@ -126,7 +126,7 @@ document.getElementById("generateList3Button").addEventListener("click", functio
     generateRandomPrompt("list3");
 });
 
-// Rest of the code remains the same...
+
 
 function generateRandomPrompt(list) {
     if (!prompts[currentGroup] || !prompts[currentGroup][list]) {
@@ -157,7 +157,7 @@ function generateRandomPrompt(list) {
 
 
 
-//_________________________________________________________________________________________--
+
 // Event listener for saving logged data
 document.getElementById("saveButton").addEventListener("click", saveLoggedData);
 
