@@ -28,7 +28,7 @@ h1 {
 /* Style buttons and select elements */
 button,
 select {
-    padding: 12px 24px;
+    padding: 12px 24px; /* Set a fixed padding for all buttons and selects */
     font-size: 18px;
     margin: 10px 0;
     background-color: #87ceeb;
@@ -39,6 +39,11 @@ select {
 
 button:hover {
     background-color: #ffa500;
+}
+
+/* Style the "Save Logged Data" button to be wider */
+#saveButton {
+    width: auto; /* Auto width based on content */
 }
 
 .prompt-display {
