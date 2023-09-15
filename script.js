@@ -113,10 +113,9 @@ groupSelection.addEventListener("change", function () {
     stageCounts.list1 = 0;
     stageCounts.list2 = 0;
     stageCounts.list3 = 0;
-    // Update stage count displays in the HTML
-    document.getElementById("stage1Count").textContent = `Stage 1 Count: ${stageCounts.list1}`;
-    document.getElementById("stage2Count").textContent = `Stage 2 Count: ${stageCounts.list2}`;
-    document.getElementById("stage3Count").textContent = `Stage 3 Count: ${stageCounts.list3}`;
+
+    // Update total count in the HTML
+    document.getElementById("totalCountDisplay").textContent = `Total Count: ${clickCount}`;
 });
 
 // Event listeners for generating prompts for each list
@@ -178,11 +177,11 @@ groupSelection.dispatchEvent(new Event("change"));
 
 function saveLoggedData() {
     if (loggedPrompts.length > 0) {
-        let csvData = "Prompt Name,Time Stamp\n";
+        let csvData = "Prompt Name,Time Stamp,Stage 1 Count,Stage 2 Count,Stage 3 Count\n";
         for (const loggedPrompt of loggedPrompts) {
-            csvData += `"${loggedPrompt.prompt}","${loggedPrompt.timestamp}"\n`;
+            csvData += `"${loggedPrompt.prompt}","${loggedPrompt.timestamp}",${stageCounts.list1},${stageCounts.list2},${stageCounts.list3}\n`;
         }
-        csvData += `Total Count,${clickCount}\n`;
+        csvData += `Total Count,${clickCount}\n`; // Only include the total count here
 
         exportData(csvData);
     }
