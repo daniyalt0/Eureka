@@ -25,6 +25,26 @@ h1 {
     color: #ffa500;
 }
 
+.stage-buttons {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+
+.stage-buttons button {
+    margin: 0 5px; /* Adjust the spacing between stage buttons */
+}
+
+.action-buttons {
+    display: flex;
+    justify-content: center;
+}
+
+.action-buttons button {
+    margin: 0 10px; /* Adjust the spacing between action buttons */
+}
+
 /* Style buttons and select elements */
 button,
 select {
@@ -85,9 +105,3 @@ button:hover {
         margin: 10px 0;
     }
 }
-
-/* CSS to hide stage counts */
-.stage-counts {
-    display: none;
-}
-
