@@ -14,28 +14,24 @@
             <option value="g1">Direct</option>
             <option value="g2">InDirect</option>
         </select>
-        <button id="generateList1Button">Stage 1</button>
-        <button id="generateList2Button">Stage 2</button>
-        <button id="generateList3Button">Stage 3</button>
-        <button id="saveButton">Save Logged Data</button>
-        <button id="hearButton" disabled>Hear This Prompt</button>
+        <div class="stage-buttons">
+            <button id="generateList1Button">Stage 1</button>
+            <button id="generateList2Button">Stage 2</button>
+            <button id="generateList3Button">Stage 3</button>
+        </div>
+        <div class="action-buttons">
+            <button id="saveButton">Save Logged Data</button>
+            <button id="hearButton" disabled>Hear This Prompt</button>
+        </div>
     </div>
     <div class="prompt-display">
         <p id="promptDisplay"></p>
-    </div>
-    <!-- Separate container for individual stage counts -->
-    <div class="stage-counts">
-        <p id="stage1Count">Stage 1 Count: 0</p>
-        <p id="stage2Count">Stage 2 Count: 0</p>
-        <p id="stage3Count">Stage 3 Count: 0</p>
-        <!-- Add more stage counts as needed -->
     </div>
     <!-- Separate container for the prompt logs -->
     <div class="log">
         <h2>Logged Prompts</h2>
         <ul id="timestampList"></ul>
         <p id="exportMessage"></p>
-        <!-- Display only the total count -->
         <p id="totalCountDisplay">Total Count: 0</p>
     </div>
     <script src="script.js"></script>
