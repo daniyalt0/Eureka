@@ -109,6 +109,14 @@ groupSelection.addEventListener("change", function () {
     promptDisplay.textContent = "";
     loggedPrompts.length = 0;
     hearButton.disabled = true;
+    // Reset individual stage counts
+    stageCounts.list1 = 0;
+    stageCounts.list2 = 0;
+    stageCounts.list3 = 0;
+    // Update stage count displays in the HTML
+    document.getElementById("stage1Count").textContent = `Stage 1 Count: ${stageCounts.list1}`;
+    document.getElementById("stage2Count").textContent = `Stage 2 Count: ${stageCounts.list2}`;
+    document.getElementById("stage3Count").textContent = `Stage 3 Count: ${stageCounts.list3}`;
 });
 
 // Event listeners for generating prompts for each list
@@ -123,6 +131,7 @@ document.getElementById("generateList2Button").addEventListener("click", functio
 document.getElementById("generateList3Button").addEventListener("click", function () {
     generateRandomPrompt("list3");
 });
+
 function generateRandomPrompt(list) {
     if (!prompts[currentGroup] || !prompts[currentGroup][list]) {
         promptDisplay.textContent = "No prompts remaining for this group and list.";
@@ -145,7 +154,7 @@ function generateRandomPrompt(list) {
 
         loggedPrompts.push({ prompt: randomPrompt, timestamp: timestamp });
         clickCountDisplay.textContent = `Click count: ${clickCount}`;
-        
+
         // Update individual stage counts in the HTML
         document.getElementById(`${list}Count`).textContent = `${list} Count: ${stageCounts[list]}`;
 
@@ -156,8 +165,6 @@ function generateRandomPrompt(list) {
         document.getElementById("totalCountDisplay").textContent = `Total Count: ${clickCount}`;
     }
 }
-
-
 
 // Event listener for saving logged data
 document.getElementById("saveButton").addEventListener("click", saveLoggedData);
