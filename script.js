@@ -85,12 +85,8 @@ const prompts = {
 };
 
 // Initialize variables
-let clickCounts = {
-    list1: 0,
-    list2: 0,
-    list3: 0
-}; // Click counts for each stage
-let totalClickCount = 0; // Total click count
+let clickCount = 0;
+const totalCounts = { list1: 0, list2: 0, list3: 0 }; // Total counts for each stage
 let currentGroup = "g1"; // Default to Group 1
 let currentList = "list1"; // Default to List 1
 const loggedPrompts = []; // Initialize an empty array for logged prompts
@@ -105,7 +101,8 @@ const promptDisplay = document.getElementById("promptDisplay");
 groupSelection.addEventListener("change", function () {
     currentGroup = groupSelection.value;
     currentList = "list1"; // Reset to List 1
-    clickCountDisplay.textContent = `Total Count: ${totalClickCount}, Stage ${currentList}: ${clickCounts[currentList]}`;
+    clickCount = 0;
+    clickCountDisplay.textContent = `Total Count: ${totalCounts[currentList]}`;
     promptDisplay.textContent = "";
     loggedPrompts.length = 0;
     hearButton.disabled = true;
@@ -124,13 +121,14 @@ document.getElementById("generateList3Button").addEventListener("click", functio
     generateRandomPrompt("list3");
 });
 
+// Rest of the code remains the same...
+
 function generateRandomPrompt(list) {
     if (!prompts[currentGroup] || !prompts[currentGroup][list]) {
         promptDisplay.textContent = "No prompts remaining for this group and list.";
     } else {
-        clickCounts[list]++;
-        totalClickCount++;
-        const listPrompts = prompts[currentGroup][list];
+        clickCount++;
+        const listPrompts = prompts[currentGroup][list]; // Use the provided list parameter
         if (listPrompts.length === 0) {
             promptDisplay.textContent = "No prompts remaining for this group and list.";
             return;
@@ -139,14 +137,15 @@ function generateRandomPrompt(list) {
         const randomPrompt = listPrompts.splice(randomIndex, 1)[0];
         const timestamp = new Date().toLocaleTimeString();
 
-        promptDisplay.textContent = `Prompt #${clickCounts[list]} (Total: ${totalClickCount}): ${randomPrompt}`;
+        promptDisplay.textContent = `Prompt #${clickCount}: ${randomPrompt}`;
         const timestampItem = document.createElement("li");
-        timestampItem.textContent = `Stage ${list}: ${clickCounts[list]}: ${randomPrompt} (Generated at ${timestamp})`;
+        timestampItem.textContent = `${clickCount}: ${randomPrompt} (Generated at ${timestamp})`;
         timestampList.appendChild(timestampItem);
 
         loggedPrompts.push({ prompt: randomPrompt, timestamp: timestamp });
-        clickCountDisplay.textContent = `Total Count: ${totalClickCount}, Stage ${currentList}: ${clickCounts[currentList]}`;
+        clickCountDisplay.textContent = `Total Count: ${clickCount}`;
 
+        // Enable the "Hear This Prompt" button after generating a prompt
         hearButton.disabled = false;
     }
 }
@@ -167,8 +166,7 @@ function saveLoggedData() {
         for (const loggedPrompt of loggedPrompts) {
             csvData += `"${loggedPrompt.prompt}","${loggedPrompt.timestamp}"\n`;
         }
-        csvData += `Total Count,${totalClickCount}\n`;
-        csvData += `Stage ${currentList}, ${clickCounts[currentList]}\n`;
+        csvData += `Total Count,${clickCount}\n`;
 
         exportData(csvData);
     }
@@ -194,7 +192,7 @@ function exportData(data) {
 }
 
 function hearCurrentPrompt() {
-    const currentPromptText = promptDisplay.textContent.replace(/^Prompt #\d+ \(Total: \d+\): /, ''); // Remove "Prompt #X (Total: Y): "
+    const currentPromptText = promptDisplay.textContent.replace(/^Prompt \d+: /, ''); // Remove "Prompt #X: "
     speakPrompt(currentPromptText);
 }
 
