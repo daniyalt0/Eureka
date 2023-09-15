@@ -25,37 +25,17 @@ h1 {
     color: #ffa500;
 }
 
-.stage-buttons {
-    display: flex;
-    flex-wrap: nowrap;
-    justify-content: center;
-    margin-bottom: 10px;
-}
-
-.stage-buttons button {
-    margin: 0 5px; /* Adjust the spacing between stage buttons */
-}
-
-.action-buttons {
-    display: flex;
-    justify-content: center;
-}
-
-.action-buttons button {
-    margin: 0 10px; /* Adjust the spacing between action buttons */
-}
-
 /* Style buttons and select elements */
 button,
 select {
-    padding: 12px 24px; /* Set a fixed padding for all buttons and selects */
+    padding: 12px 24px;
     font-size: 18px;
     margin: 10px 0;
     background-color: #87ceeb;
     border: none;
     color: #fff;
     cursor: pointer;
-    width: 150px; /* Set a fixed width for buttons and select elements */
+    width: 150px;
 }
 
 button:hover {
@@ -64,7 +44,7 @@ button:hover {
 
 /* Style the "Save Logged Data" button to be wider */
 #saveButton {
-    width: 150px; /* Auto width based on content */
+    width: 150px;
 }
 
 .prompt-display {
@@ -83,7 +63,7 @@ button:hover {
 }
 
 /* Style the click count display */
-#clickCountDisplay {
+#totalCountDisplay {
     color: #333;
     font-size: 18px;
     margin-top: 20px;
@@ -96,12 +76,18 @@ button:hover {
     select,
     h1,
     .prompt-display,
-    #clickCountDisplay {
+    #totalCountDisplay {
         font-size: 16px;
     }
 
     /* Adjust margin for smaller screens */
     .controls {
         margin: 10px 0;
+    }
+
+    /* Make buttons take full width on smaller screens */
+    button,
+    select {
+        width: 100%;
     }
 }
