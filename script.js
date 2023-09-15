@@ -123,7 +123,7 @@ groupSelection.addEventListener("change", function () {
     document.getElementById("stage3Count").textContent = `Stage 3 Count: ${stageCounts.list3}`;
 });
 
-// Event listeners for generating prompts for each list
+// Event listener for generating prompts for each list
 document.getElementById("generateList1Button").addEventListener("click", function () {
     generateRandomPrompt("list1");
 });
@@ -142,6 +142,7 @@ function generateRandomPrompt(list) {
     } else {
         clickCount++;
         stageCounts[list]++; // Update the count for the current stage
+        totalCounts[list]++; // Update the total count for the current stage
         const listPrompts = prompts[currentGroup][list];
         if (listPrompts.length === 0) {
             promptDisplay.textContent = "No prompts remaining for this group and list.";
@@ -162,13 +163,11 @@ function generateRandomPrompt(list) {
         // Update individual stage counts in the HTML
         document.getElementById(`${list}Count`).textContent = `${list} Count: ${stageCounts[list]}`;
 
-        // Enable the "Hear This Prompt" button after generating a prompt
-        hearButton.disabled = false;
-
         // Update total count in the HTML
         document.getElementById("totalCountDisplay").textContent = `Total Count: ${clickCount}`;
     }
 }
+
 
 // Event listener for saving logged data
 document.getElementById("saveButton").addEventListener("click", saveLoggedData);
