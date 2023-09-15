@@ -40,66 +40,7 @@ const prompts = {
             // Add more prompts for Group 2 List 3
         ],
     },
-    g3: {
-        list1: [
-            "Prompt 1 for Group 3 - List 1",
-            "Prompt 2 for Group 3 - List 1",
-            "Prompt 3 for Group 3 - List 1"
-            // Add more prompts for Group 3 List 1
-        ],
-        list2: [
-            "Prompt 1 for Group 3 - List 2",
-            "Prompt 2 for Group 3 - List 2",
-            "Prompt 3 for Group 3 - List 2"
-            // Add more prompts for Group 3 List 2
-        ],
-        list3: [
-            "Prompt 1 for Group 3 - List 3",
-            "Prompt 2 for Group 3 - List 3",
-            "Prompt 3 for Group 3 - List 3"
-            // Add more prompts for Group 3 List 3
-        ],
-    },
-    g4: {
-        list1: [
-            "Prompt 1 for Group 4 - List 1",
-            "Prompt 2 for Group 4 - List 1",
-            "Prompt 3 for Group 4 - List 1"
-            // Add more prompts for Group 4 List 1
-        ],
-        list2: [
-            "Prompt 1 for Group 4 - List 2",
-            "Prompt 2 for Group 4 - List 2",
-            "Prompt 3 for Group 4 - List 2"
-            // Add more prompts for Group 4 List 2
-        ],
-        list3: [
-            "Prompt 1 for Group 4 - List 3",
-            "Prompt 2 for Group 4 - List 3",
-            "Prompt 3 for Group 4 - List 3"
-            // Add more prompts for Group 4 List 3
-        ],
-    },
-    g5: {
-        list1: [
-            "Prompt 1 for Group 5 - List 1",
-            "Prompt 2 for Group 5 - List 1",
-            "Prompt 3 for Group 5 - List 1"
-            // Add more prompts for Group 5 List 1
-        ],
-        list2: [
-            "Prompt 1 for Group 5 - List 2",
-            "Prompt 2 for Group 5 - List 2",
-            "Prompt 3 for Group 5 - List 2"
-            // Add more prompts for Group 5 List 2
-        ],
-        list3: [
-            "Prompt 1 for Group 5 - List 3",
-            "Prompt 2 for Group 5 - List 3",
-            "Prompt 3 for Group 5 - List 3"
-            // Add more prompts for Group 5 List 3
-        ],
-    },
+   
 };
 
 // Rest of the code remains the same...
@@ -139,6 +80,7 @@ document.getElementById("generateList2Button").addEventListener("click", functio
 document.getElementById("generateList3Button").addEventListener("click", function () {
     generateRandomPrompt("list3");
 });
+
 
 // Rest of the code remains the same...
 
