@@ -44,7 +44,7 @@ button:hover {
 
 /* Style the "Save Logged Data" button to be wider */
 #saveButton {
-    width: auto; /* Auto width based on content */
+    width: 150px; /* Auto width based on content */
 }
 
 .prompt-display {
