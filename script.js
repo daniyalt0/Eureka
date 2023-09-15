@@ -107,7 +107,7 @@ groupSelection.addEventListener("change", function () {
     currentGroup = groupSelection.value;
     currentList = "list1"; // Reset to List 1
     clickCount = 0;
-    clickCountDisplay.textContent = `Total Count: ${totalCounts[currentList]}`;
+    clickCountDisplay.textContent = `Click count: ${clickCount}`; // Update the total click count
     promptDisplay.textContent = "";
     loggedPrompts.length = 0;
     hearButton.disabled = true;
