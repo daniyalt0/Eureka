@@ -147,8 +147,12 @@ function generateRandomPrompt(list) {
         timestampItem.textContent = `${clickCount}: ${randomPrompt} (Generated at ${timestamp})`;
         timestampList.appendChild(timestampItem);
 
+        // Update the counts for the current stage and total counts
+        totalCounts[list]++;
+        totalCounts["total"]++;
+
         loggedPrompts.push({ prompt: randomPrompt, timestamp: timestamp });
-        clickCountDisplay.textContent = `Click count: ${clickCount}`;
+        clickCountDisplay.textContent = `Total Count: ${totalCounts["total"]}`;
 
         // Enable the "Hear This Prompt" button after generating a prompt
         hearButton.disabled = false;
@@ -168,18 +172,24 @@ hearButton.addEventListener("click", hearCurrentPrompt);
 groupSelection.value = "g1";
 groupSelection.dispatchEvent(new Event("change"));
 
-
 function saveLoggedData() {
     if (loggedPrompts.length > 0) {
-        let csvData = "Prompt Name,Time Stamp\n";
-        for (const loggedPrompt of loggedPrompts) {
-            csvData += `"${loggedPrompt.prompt}","${loggedPrompt.timestamp}"\n`;
+        let csvData = "Stage,Prompt Name,Time Stamp\n";
+        for (const stage in totalCounts) {
+            if (totalCounts.hasOwnProperty(stage)) {
+                csvData += `${stage},${totalCounts[stage]},\n`;
+            }
         }
-        csvData += `Total Count,${clickCount}\n`;
+
+        for (const loggedPrompt of loggedPrompts) {
+            csvData += `"${currentGroup}","${loggedPrompt.prompt}","${loggedPrompt.timestamp}"\n`;
+        }
 
         exportData(csvData);
     }
 }
+
+
 
 function exportData(data) {
     const blob = new Blob([data], { type: 'text/csv' });
