@@ -91,6 +91,9 @@ let currentGroup = "g1"; // Default to Group 1
 let currentList = "list1"; // Default to List 1
 const loggedPrompts = []; // Initialize an empty array for logged prompts
 
+// Initialize variables for individual stage counts
+const stageCounts = { list1: 0, list2: 0, list3: 0 };
+
 const clickCountDisplay = document.getElementById("clickCountDisplay");
 const timestampList = document.getElementById("timestampList");
 const hearButton = document.getElementById("hearButton");
@@ -120,15 +123,13 @@ document.getElementById("generateList2Button").addEventListener("click", functio
 document.getElementById("generateList3Button").addEventListener("click", function () {
     generateRandomPrompt("list3");
 });
-
-// Rest of the code remains the same...
-
 function generateRandomPrompt(list) {
     if (!prompts[currentGroup] || !prompts[currentGroup][list]) {
         promptDisplay.textContent = "No prompts remaining for this group and list.";
     } else {
         clickCount++;
-        const listPrompts = prompts[currentGroup][list]; // Use the provided list parameter
+        stageCounts[list]++; // Update the count for the current stage
+        const listPrompts = prompts[currentGroup][list];
         if (listPrompts.length === 0) {
             promptDisplay.textContent = "No prompts remaining for this group and list.";
             return;
@@ -143,12 +144,20 @@ function generateRandomPrompt(list) {
         timestampList.appendChild(timestampItem);
 
         loggedPrompts.push({ prompt: randomPrompt, timestamp: timestamp });
-        clickCountDisplay.textContent = `Total Count: ${clickCount}`;
+        clickCountDisplay.textContent = `Click count: ${clickCount}`;
+        
+        // Update individual stage counts in the HTML
+        document.getElementById(`${list}Count`).textContent = `${list} Count: ${stageCounts[list]}`;
 
         // Enable the "Hear This Prompt" button after generating a prompt
         hearButton.disabled = false;
+
+        // Update total count in the HTML
+        document.getElementById("totalCountDisplay").textContent = `Total Count: ${clickCount}`;
     }
 }
+
+
 
 // Event listener for saving logged data
 document.getElementById("saveButton").addEventListener("click", saveLoggedData);
