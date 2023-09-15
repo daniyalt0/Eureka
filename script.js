@@ -189,8 +189,12 @@ function saveLoggedData() {
         csvData += `Total Count,${clickCount}\n`; // Only include the total count here
 
         exportData(csvData);
+
+        // Update total count in the HTML
+        document.getElementById("totalCountDisplay").textContent = `Total Count: ${clickCount}`;
     }
 }
+
 
 function exportData(data) {
     const blob = new Blob([data], { type: 'text/csv' });
